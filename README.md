@@ -1,7 +1,7 @@
 
 # P4z : Analyse de performances de différents tris
 
-[Grille d'évaluation P4z](https://docs.google.com/spreadsheets/d/18JgKtAsaWRBCuHcis48XKvUTlEt5aQwwRonfGQjIH4o/edit#gid=0
+[Grille d'évaluation P4z](https://docs.google.com/spreadsheets/d/1VXeO91rhy04xa0p8KUhWliFl228utHaDir8MstO5Z-M/edit?usp=sharing
 )
 
 ## Problème
@@ -41,7 +41,6 @@ Suite des commandes, ou script, à exécuter pour produire les données.
 | Aléatoire            | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
 | Trié                 | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
 | Tri inversé          | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
-| Valeurs redontantes  | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
 
 ### Analyse des résultats préalables
 
@@ -49,7 +48,7 @@ Explications précises et succinctes des résultats préalables.
 
 ### Discussion des résultats préalables
 
-Explications précises et succinctes sur ce que les limites des résultats
+Explications précises et succinctes des limites des résultats
 préalables et ce qu'ils ne permettent pas de vérifier.
 
 ## Etude approfondie
