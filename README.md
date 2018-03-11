@@ -36,6 +36,16 @@ Suite des commandes, ou script, à exécuter pour produire les données.
 
 ## Résultats préalables
 
+### Temps d'exécution
+
+| Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                |
+|----------------------|---------------------------|---------------------------|---------------------------|
+| Aléatoire            | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
+| Trié                 | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
+| Tri inversé          | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
+
+### Consommation mémoire
+
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                |
 |----------------------|---------------------------|---------------------------|---------------------------|
 | Aléatoire            | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) | ![plot](path/to/plot.png) |
