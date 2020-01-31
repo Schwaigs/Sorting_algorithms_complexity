@@ -29,7 +29,7 @@ void afficheTab(long * A, size_t p, size_t q){
     }
 }
 
-void createAleaTab(long* A, size_t taille){
+void createAleaTab(long* A, size_t taille, long min,long max){
     for(size_t i = 0;i<taille;i++){
         A[i] = (long) (rand() % taille);
     }
