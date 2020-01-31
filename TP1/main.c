@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "triFusion.h"
 #include "tris.h"
+#include "utils.h"
 
 int main(int argc, char* argv[]) {
     /********************* Test algo 2 ***********************/
