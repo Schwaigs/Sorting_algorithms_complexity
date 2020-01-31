@@ -1,4 +1,4 @@
-
+#include "triFusion.h"
 
 
 void triFusion(long* A, size_t taille){
