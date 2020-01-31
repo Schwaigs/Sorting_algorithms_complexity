@@ -8,7 +8,7 @@ void triFusion(long* A, size_t taille){
 void sousTriFusion(long* A, size_t debut, size_t fin){
     if (debut+1 < fin){
         size_t q = (size_t) ((debut+fin)/2);
-        //printf(" moit : %ld \n",q);
+        printf("# sousTriFusion \n taille du tableau : %ld \n moit : %ld \n",(fin-debut),q);
         sousTriFusion(A,debut,q);
         sousTriFusion(A,q,fin);
         fusion(A,debut,q,fin);
@@ -18,14 +18,26 @@ void sousTriFusion(long* A, size_t debut, size_t fin){
 void fusion(long* A, size_t debut, size_t milieu, size_t fin){
     size_t taille1 = milieu - debut;
     size_t taille2 = fin - milieu;
-    printf("taille 1 : %ld   -   taille 2 : %ld \n", taille1, taille2);
-    printTab(A,fin);
+    //printf("taille 1 : %ld   -   taille 2 : %ld \n", taille1, taille2);
+    //printTab(A,fin);
     long* Ag = malloc(sizeof(long)*taille1);
     long* Ad = malloc(sizeof(long)*taille2);
-    cpTab(A, Ag, 0,milieu);
+    cpTab(A, Ag, debut,milieu);
     cpTab(A, Ad, milieu,fin);
+
+    //debut affichage
+    printf("## Fusion \n  taille du tableau à former : %ld \n  debut : %ld \n  milieu : %ld \n  fin : %ld \n  tableau complet :",(fin-debut),debut,milieu,fin);
+    printf("  [");
+    for(size_t i = debut;i<fin;i++){
+        printf(" %ld,",A[i]);
+    }
+    printf("]\n");
+    printf("  tableau gauche :\n");
     printTab(Ag,taille1);
+    printf("  tableau droit :\n");
     printTab(Ad,taille2);
+    // fin affichage
+
     size_t indg = 0;
     size_t indd = 0;
     size_t i = debut;
