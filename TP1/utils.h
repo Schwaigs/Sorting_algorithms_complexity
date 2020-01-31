@@ -8,6 +8,6 @@ void printTab(long* A,size_t taille);
 void afficheTab(long * A, size_t p, size_t q);
 
 /********************************** Gen Tab *********************************/
-void createAleaTab(long* A, size_t taille);
-void createCroisTab(long* A, size_t taille);
-void createDecroisTab(long* A, size_t taille);
+void createAleaTab(long* A, size_t taille, long min,long max);
+void createCroisTab(long* A, size_t taille, long min,long max);
+void createDecroisTab(long* A, size_t taille, long min,long max);

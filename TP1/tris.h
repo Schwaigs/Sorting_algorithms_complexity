@@ -3,7 +3,6 @@
 /***************************** Algo 1 : Tri par insertion **********************/
 void triInsertion(long * A, size_t n);
 
-
 /***************************** Algo 2 : Tri fusion *****************************/
 void triFusion(long* A, size_t taille);
 void sousTriFusion(long* A, size_t debut, size_t fin);

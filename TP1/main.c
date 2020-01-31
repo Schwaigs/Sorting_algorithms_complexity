@@ -12,9 +12,9 @@ int main(int argc, char* argv[]) {
     long tabAlea[10];
     long tabCrois[10];
     long tabDeCrois[10];
-    createAleaTab(tabAlea,10);
-    createCroisTab(tabCrois,10);
-    createDecroisTab(tabDeCrois,10);
+    createAleaTab(tabAlea,10,-5,5);
+    createCroisTab(tabCrois,10,-10,5);
+    createDecroisTab(tabDeCrois,10,-5,20);
     printf("tab alea \n");
     printTab(tabAlea,10);
     printf("tab Crois \n");

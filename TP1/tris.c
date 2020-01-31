@@ -31,7 +31,9 @@ void triInsertion(long * A, size_t n){
 /***************************** Algo 2 : Tri fusion *****************************/
 
 void triFusion(long* A, size_t taille){
+    printf("********* Tri par fusion **********\n");
     sousTriFusion(A,0,taille);
+    printTab(A,taille);
 }
 
 void sousTriFusion(long* A, size_t debut, size_t fin){
@@ -47,8 +49,6 @@ void sousTriFusion(long* A, size_t debut, size_t fin){
 void fusion(long* A, size_t debut, size_t milieu, size_t fin){
     size_t taille1 = milieu - debut;
     size_t taille2 = fin - milieu;
-    //printf("taille 1 : %ld   -   taille 2 : %ld \n", taille1, taille2);
-    //printTab(A,fin);
     long* Ag = malloc(sizeof(long)*taille1);
     long* Ad = malloc(sizeof(long)*taille2);
     cpTab(A, Ag, debut,milieu);
