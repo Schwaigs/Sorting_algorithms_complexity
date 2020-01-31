@@ -28,3 +28,19 @@ void afficheTab(long * A, size_t p, size_t q){
         printf("Tab vide \n");
     }
 }
+
+void createAleaTab(long* A, size_t taille){
+    for(size_t i = 0;i<taille;i++){
+        A[i] = (long) (rand() % taille);
+    }
+}
+void createCroisTab(long* A, size_t taille){
+    for(size_t i = 0;i<taille;i++){
+        A[i] = (long) i;
+    }
+}
+void createDecroisTab(long* A, size_t taille){
+    for(size_t i = 0;i<taille;i++){
+        A[i] = (long)(taille - i);
+    }
+}
