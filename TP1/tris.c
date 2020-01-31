@@ -1,6 +1,35 @@
 #include "tris.h"
 
+/***************************** Algo 1 : Tri par insertion *****************************/
+
+void triInsertion(long * A, size_t n){
+    printf("********* Tri par insertion **********\n");
+    afficheTab(A,0,n);
+    for( size_t i = 1; i <= n-1; i++){
+        long cle = A[i];
+        size_t j = i-1;
+        printf("Clé %ld à la position : %ld\n",cle,i);
+        while(((j > j-1) || (j == 0)) && (A[j] > cle)){
+            printf("    %ld à la position %ld, plus grand que %ld \n",A[j],j,cle);
+            A[j+1] = A[j];
+            printf("    Ecriture de %ld : ",A[j]);
+            afficheTab(A,0,n);
+            j--;
+            if(j+1 == 0){
+                break;
+            }
+        }
+        A[j+1] = cle;
+        printf("    Ecriture de la clé %ld : ",cle);
+        afficheTab(A,0,n);
+    }
+    printf("Tableau trié : ");
+    afficheTab(A,0,n);
+}
+
+
 /***************************** Algo 2 : Tri fusion *****************************/
+
 void triFusion(long* A, size_t taille){
     sousTriFusion(A,0,taille);
 }
@@ -60,6 +89,8 @@ void fusion(long* A, size_t debut, size_t milieu, size_t fin){
     free(Ag);
     free(Ad);
 }
+
+
 /***************************** Algo 3 : Tri rapide *****************************/
 
 void sousTriRapide(long * A,size_t p, size_t r){
@@ -81,7 +112,7 @@ size_t partition(long * A, size_t p, size_t r){
     long pivot = A[r-1]; //le pivot est le dernier élément du tableau
     printf("Pivot %ld \n",pivot);
     size_t i = p;
-    for (size_t j = p; j <= r-2; j++){
+    for (size_t j = p; j+2 <= r; j++){
         printf("    i = %ld et A[i] = %ld   j = %ld et A[j] = %ld \n",i,A[i],j,A[j]);
         if(A[j] <= pivot){
             printf("    Permutation de %ld et %ld : ",A[i],A[j]);
@@ -101,6 +132,8 @@ size_t partition(long * A, size_t p, size_t r){
 }
 
 void triRapide(long * A, size_t n){
+    printf("********* Tri rapide **********\n");
+    afficheTab(A,0,n);
     sousTriRapide(A,0,n);
     printf("Tableau trié : ");
     afficheTab(A,0,n);

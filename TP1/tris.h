@@ -1,9 +1,7 @@
 #include "utils.h"
-#include <stdio.h>
-#include <stddef.h>
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
+
+/***************************** Algo 1 : Tri par insertion **********************/
+void triInsertion(long * A, size_t n);
 
 
 /***************************** Algo 2 : Tri fusion *****************************/
