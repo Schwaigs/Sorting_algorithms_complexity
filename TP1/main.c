@@ -1,5 +1,5 @@
 #include <stdio.h>
-//#include "tris.h"
+#include "tri_rapide_decompte.h"
 #include "utils.h"
 #include "tri_fusion_decompte.h"
 
@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
     long tab3[6] = {7,8,1,2,-8,3};
     long tab4[7] = {1,9,8,7,3,5,6};
     perf p = init_perf();
+
     /********************* Test Gen Tab **********************/
     long tabAlea[10];
     long tabCrois[10];
@@ -16,12 +17,12 @@ int main(int argc, char* argv[]) {
     createAleaTab(tabAlea,10,-5,5);
     createCroisTab(tabCrois,10,-10,5);
     createDecroisTab(tabDeCrois,10,-5,20);
-//    printf("tab alea \n");
-//    printTab(tabAlea,10);
-//    printf("tab Crois \n");
-//    printTab(tabCrois,10);
-//    printf("tab Decrois \n");
-//    printTab(tabDeCrois,10);
+    printf("tab alea \n");
+    printTab(tabAlea,10);
+    printf("tab Crois \n");
+    printTab(tabCrois,10);
+    printf("tab Decrois \n");
+    printTab(tabDeCrois,10);
 
     /********************* Test algo 1 tri par insertion ***********************/
 //    triInsertion(tab,5);
