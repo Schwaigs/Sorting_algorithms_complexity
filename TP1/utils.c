@@ -69,3 +69,13 @@ void createDecroisTab(long* A, size_t taille, long min,long max){
         }
     }
 }
+
+perf init_perf() {
+    perf p;
+    p.nb_ecriture = 0;
+    p.nb_echange = 0;
+    p.nb_comp = 0;
+    p.appels_fusion = 0;
+    p.appels_partition = 0;
+  return p;
+}
