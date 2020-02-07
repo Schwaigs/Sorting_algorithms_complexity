@@ -11,18 +11,18 @@ int main(int argc, char* argv[]) {
     perf p = init_perf();
 
     /********************* Test Gen Tab **********************/
-    long tabAlea[10];
-    long tabCrois[10];
-    long tabDeCrois[10];
-    createAleaTab(tabAlea,10,-5,5);
-    createCroisTab(tabCrois,10,-10,5);
-    createDecroisTab(tabDeCrois,10,-5,20);
-    printf("tab alea \n");
-    printTab(tabAlea,10);
-    printf("tab Crois \n");
-    printTab(tabCrois,10);
-    printf("tab Decrois \n");
-    printTab(tabDeCrois,10);
+//    long tabAlea[1000000];
+//    long tabCrois[1000000];
+//    long tabDeCrois[10];
+//    createAleaTab(tabAlea,1000000,-100,100000000);
+//    createCroisTab(tabCrois,1000000,-10,100000);
+//    createDecroisTab(tabDeCrois,10,-5,20);
+//    printf("tab alea \n");
+//    printTab(tabAlea,10);
+//    printf("tab Crois \n");
+//    printTab(tabCrois,10);
+//    printf("tab Decrois \n");
+//    printTab(tabDeCrois,10);
 
     /********************* Test algo 1 tri par insertion ***********************/
 //    triInsertion(tab,5);
@@ -41,9 +41,9 @@ int main(int argc, char* argv[]) {
 //    triRapide(tab3,6);
 
     /********************* Test algo 2 tri par fusionD **********************/
-    triFusion(tab4,7,&p);
-//    triFusion(tab3,6);
-//    triFusion(tab2,8);
-//    triFusion(tab,5);
+//    triFusion(tabAlea,1000000);
+//    triFusion(tabCrois,1000000);
+    triFusion(tab2,8);
+    triFusion(tab,5);
     return 0;
 }

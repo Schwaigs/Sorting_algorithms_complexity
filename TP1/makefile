@@ -15,8 +15,8 @@ tri_fusion_decompte.o: tri_fusion_decompte.h tri_fusion_decompte.c
 #main: tris.o tri_rapide_decompte.o main.c utils.o
 #	gcc -Wall -o main tris.o tri_rapide_decompte.o main.c utils.o
 
-main: tri_rapide_decompte.o main.c utils.o
-	gcc -Wall -o main tri_rapide_decompte.o main.c utils.o
+main: tri_rapide_decompte.o tri_fusion_decompte.o main.c utils.o
+	gcc -Wall -o main tri_rapide_decompte.o tri_fusion_decompte.o main.c utils.o
 
 
 clean:
