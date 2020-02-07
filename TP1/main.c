@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "tri_rapide_decompte.h"
 #include "utils.h"
+#include "tri_fusion_decompte.h"
 
 int main(int argc, char* argv[]) {
     long tab[5] = {3,8,1,5,2};
@@ -13,7 +14,7 @@ int main(int argc, char* argv[]) {
     long tabAlea[10];
     long tabCrois[10];
     long tabDeCrois[10];
-    /*createAleaTab(tabAlea,10,-5,5);
+    createAleaTab(tabAlea,10,-5,5);
     createCroisTab(tabCrois,10,-10,5);
     createDecroisTab(tabDeCrois,10,-5,20);
     printf("tab alea \n");
@@ -24,19 +25,25 @@ int main(int argc, char* argv[]) {
     printTab(tabDeCrois,10);
 
     /********************* Test algo 1 tri par insertion ***********************/
-   /* triInsertion(tab,5);
-    triInsertion(tab2,8);
-    triInsertion(tab3,6);
+//    triInsertion(tab,5);
+//    triInsertion(tab2,8);
+//    triInsertion(tab3,6);
 
     /********************* Test algo 2 tri par fusion ***********************/
-   /* triFusion(tab4,7);
-    triFusion(tab3,6);
-    triFusion(tab2,8);
-    triFusion(tab,5);
+//    triFusion(tab4,7);
+//    triFusion(tab3,6);
+//    triFusion(tab2,8);
+//    triFusion(tab,5);
 
     /********************* Test algo 3 tri rapide ***********************/
-    triRapide(tab,5,&p);
-    triRapide(tab2,8,&p);
-    triRapide(tab3,6,&p);
+//    triRapide(tab,5);
+//    triRapide(tab2,8);
+//    triRapide(tab3,6);
+
+    /********************* Test algo 2 tri par fusionD **********************/
+    triFusion(tab4,7,&p);
+//    triFusion(tab3,6);
+//    triFusion(tab2,8);
+//    triFusion(tab,5);
     return 0;
 }

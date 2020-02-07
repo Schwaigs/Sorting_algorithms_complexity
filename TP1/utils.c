@@ -77,5 +77,17 @@ perf init_perf() {
     p.nb_comp = 0;
     p.appels_fusion = 0;
     p.appels_partition = 0;
+    p.nb_alloc = 0;
+    p.nb_ecriture_tab = 0;
   return p;
+}
+
+void printPerf(perf p){
+    printf("#-#-# performance #-#-#\n nombre d'écriture : %d\n"
+           "nombre d'écriture dans un tableau : %d\n"
+           "nombre d'échange : %d\n"
+           "nombre de comparaison : %d\n"
+           "nombre de fusion : %d\n"
+           "bit alloué : %d\n"
+           "nombre de partition : %d\n",p.nb_ecriture,p.nb_ecriture_tab,p.nb_echange,p.nb_comp,p.appels_fusion,p.nb_alloc,p.appels_partition);
 }

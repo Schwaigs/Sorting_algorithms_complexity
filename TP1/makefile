@@ -9,6 +9,9 @@ utils.o: utils.h utils.c
 tri_rapide_decompte.o: tri_rapide_decompte.h tri_rapide_decompte.c
 	gcc -Wall -c tri_rapide_decompte.c
 
+tri_fusion_decompte.o: tri_fusion_decompte.h tri_fusion_decompte.c
+	gcc -Wall -c tri_fusion_decompte.c
+
 #main: tris.o tri_rapide_decompte.o main.c utils.o
 #	gcc -Wall -o main tris.o tri_rapide_decompte.o main.c utils.o
 
