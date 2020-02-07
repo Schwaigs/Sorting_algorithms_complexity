@@ -1,3 +1,5 @@
+#ifndef UTILS_H
+#define UTILS_H
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -21,3 +23,4 @@ void afficheTab(long * A, size_t p, size_t q);
 void createAleaTab(long* A, size_t taille, long min,long max);
 void createCroisTab(long* A, size_t taille, long min,long max);
 void createDecroisTab(long* A, size_t taille, long min,long max);
+#endif
