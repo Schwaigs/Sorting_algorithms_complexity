@@ -1,13 +1,20 @@
-all: main main.o utils.o
+all: main main.o utils.o tri_rapide_decompte.o
 
 utils.o: utils.h utils.c
 	gcc -o utils.o -Wall -c utils.c
 
-tris.o: tris.h tris.c
-	gcc -Wall -c tris.c
+#tris.o: tris.h tris.c
+#	gcc -Wall -c tris.c
 
-main: tris.o main.c utils.o
-	gcc -Wall -o main tris.o main.c utils.o
+tri_rapide_decompte.o: tri_rapide_decompte.h tri_rapide_decompte.c
+	gcc -Wall -c tri_rapide_decompte.c
+
+#main: tris.o tri_rapide_decompte.o main.c utils.o
+#	gcc -Wall -o main tris.o tri_rapide_decompte.o main.c utils.o
+
+main: tri_rapide_decompte.o main.c utils.o
+	gcc -Wall -o main tri_rapide_decompte.o main.c utils.o
+
 
 clean:
 	rm *.o main
