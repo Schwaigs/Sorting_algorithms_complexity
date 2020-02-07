@@ -2,6 +2,7 @@
 #include "tri_rapide_decompte.h"
 #include "utils.h"
 #include "tri_fusion_decompte.h"
+#include "tri_inser_decompte.h"
 
 int main(int argc, char* argv[]) {
     long tab[5] = {3,8,1,5,2};
@@ -24,8 +25,8 @@ int main(int argc, char* argv[]) {
     printTab(tabDeCrois,10);
 
     /********************* Test algo 1 tri par insertion ***********************/
-//    triInsertion(tab,5);
-//    triInsertion(tab2,8);
+    triInsertion(tab,5);
+    triInsertion(tab2,8);
 //    triInsertion(tab3,6);
 
     /********************* Test algo 2 tri par fusion ***********************/
@@ -45,9 +46,9 @@ int main(int argc, char* argv[]) {
 //    triFusion(tab2,8);
 //    triFusion(tab,5);
 
-    /********************* Test algo 3 tri rapide ***********************/
+    /********************* Test algo 3 tri rapideD ***********************/
     //triRapide(tab,5);
     //triRapide(tab2,8);
-    triRapide(tab3,6);
+//   triRapide(tab3,6);
     return 0;
 }
