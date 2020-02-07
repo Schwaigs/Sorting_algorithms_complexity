@@ -8,7 +8,6 @@ int main(int argc, char* argv[]) {
     long tab2[8] = {12,8,1,-5,2,-8,6,9};
     long tab3[6] = {7,8,1,2,-8,3};
     long tab4[7] = {1,9,8,7,3,5,6};
-    perf p = init_perf();
 
     /********************* Test Gen Tab **********************/
     long tabAlea[10];
@@ -41,9 +40,14 @@ int main(int argc, char* argv[]) {
 //    triRapide(tab3,6);
 
     /********************* Test algo 2 tri par fusionD **********************/
-    triFusion(tab4,7,&p);
+    //triFusion(tab4,7,&p);
 //    triFusion(tab3,6);
 //    triFusion(tab2,8);
 //    triFusion(tab,5);
+
+    /********************* Test algo 3 tri rapide ***********************/
+    //triRapide(tab,5);
+    //triRapide(tab2,8);
+    triRapide(tab3,6);
     return 0;
 }
