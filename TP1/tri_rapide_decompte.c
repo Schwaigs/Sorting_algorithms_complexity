@@ -48,10 +48,12 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
     return i;
 }
 
-void triRapide(long * A, size_t n, perf* pe){
+void triRapide(long * A, size_t n){
     printf("********* Tri rapide **********\n");
+    perf pe = init_perf();
     afficheTab(A,0,n);
-    sousTriRapide(A,0,n,pe);
+    sousTriRapide(A,0,n,&pe);
     printf("Tableau trié : ");
     afficheTab(A,0,n);
+    printPerf(pe);
 }
