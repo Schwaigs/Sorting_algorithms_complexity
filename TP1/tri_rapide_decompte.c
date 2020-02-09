@@ -28,8 +28,8 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
 
     for (size_t j = p; j+2 <= r; j++){
 
-        pe->nb_comp += 2; //comparaison boucle
-        pe->nb_ecriture +=1; //incrémentation boucle
+        pe->nb_comp += 2; //comparaison boucle et if
+        pe->nb_ecriture ++; //incrémentation boucle
 
 //        printf("    i = %ld et A[i] = %ld   j = %ld et A[j] = %ld \n",i,A[i],j,A[j]);
         if(A[j] <= pivot){
@@ -40,7 +40,7 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
             i++;
 
             pe->nb_echange +=1;
-            pe->nb_ecriture +=4;
+            pe->nb_ecriture +=2;
             pe->nb_ecriture_tab +=2;
 //            afficheTab(A,p,r);
         }
@@ -52,7 +52,7 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
 
     pe->nb_echange +=1;
     pe->nb_ecriture_tab +=2;
-    pe->nb_ecriture +=3;
+    pe->nb_ecriture ++;
 //    afficheTab(A,p,r);
     return i;
 }

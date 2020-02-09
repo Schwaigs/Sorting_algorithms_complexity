@@ -51,6 +51,7 @@ void fusion(long* A, size_t debut, size_t milieu, size_t fin,perf* p){
     p->nb_alloc += 5* sizeof(size_t) + sizeof(long)*(fin-debut);
 
     while (i<fin){
+        p->nb_comp++;
         if (indg == taille1){
             A[i] = Ad[indd];
             indd++;
@@ -69,7 +70,7 @@ void fusion(long* A, size_t debut, size_t milieu, size_t fin,perf* p){
             p->nb_comp+=3;
         }
         i++;
-        p->nb_ecriture+=3;
+        p->nb_ecriture+=2;
         p->nb_ecriture_tab++;
     }
     free(Ag);
