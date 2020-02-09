@@ -107,11 +107,11 @@ int main(int argc, char* argv[]) {
     //triRapide(tab2,8);
 //   triRapide(tab3,6);
 
-    pthread_join(triInsert,NULL);
+    //pthread_join(triInsert,NULL);
     pthread_join(triFus,NULL);
     pthread_join(triRap,NULL);
     free(tabAlea);
-    free(tabAleaCp1);
+    //free(tabAleaCp1);
     free(tabAleaCp2);
     free(tabAleaCp3);
     return 0;
