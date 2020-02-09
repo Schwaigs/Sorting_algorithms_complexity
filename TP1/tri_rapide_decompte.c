@@ -21,9 +21,10 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
     long pivot = A[r-1]; //le pivot est le dernier élément du tableau
 //    printf("Pivot %ld \n",pivot);
     size_t i = p;
+    long tmp;
 
     pe->nb_ecriture +=2;
-    pe->nb_alloc += sizeof(long) + sizeof(size_t);
+    pe->nb_alloc += sizeof(long)*2 + sizeof(size_t)*2;
 
     for (size_t j = p; j+2 <= r; j++){
 
@@ -33,12 +34,11 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
 //        printf("    i = %ld et A[i] = %ld   j = %ld et A[j] = %ld \n",i,A[i],j,A[j]);
         if(A[j] <= pivot){
 //            printf("    Permutation de %ld et %ld : ",A[i],A[j]);
-            long tmp = A[i];
+            tmp = A[i];
             A[i] = A[j];
             A[j] = tmp;
             i++;
 
-            pe->nb_alloc += sizeof(long);
             pe->nb_echange +=1;
             pe->nb_ecriture +=4;
             pe->nb_ecriture_tab +=2;
@@ -46,12 +46,11 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
         }
     }
 //    printf("    Permutation du pivot : ");
-    long tmp = A[i];
+    tmp = A[i];
     A[i] = A[r-1];
     A[r-1] = tmp;
 
     pe->nb_echange +=1;
-    pe->nb_alloc += sizeof(long);
     pe->nb_ecriture_tab +=2;
     pe->nb_ecriture +=3;
 //    afficheTab(A,p,r);

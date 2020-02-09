@@ -68,14 +68,14 @@ int main(int argc, char* argv[]) {
 //    triRapide(tab3,6);
 
     /********************* Test algo 1 tri par insertionD ***********************/
-    long* tabAleaCp1 = malloc(sizeof(long)*taille);
-    memcpy(tabAleaCp1,tabAlea,sizeof(long)*taille);
-
-    struct argument arg1;
-    arg1.size = taille;
-    arg1.tab = tabAleaCp1;
-    pthread_t triInsert;
-    pthread_create (&triInsert, NULL, threadInsert, &arg1);
+//    long* tabAleaCp1 = malloc(sizeof(long)*taille);
+//    memcpy(tabAleaCp1,tabAlea,sizeof(long)*taille);
+//
+//    struct argument arg1;
+//    arg1.size = taille;
+//    arg1.tab = tabAleaCp1;
+//    pthread_t triInsert;
+//    pthread_create (&triInsert, NULL, threadInsert, &arg1);
 //    triInsertion(tabAleaCp,taille);
 //    triInsertion(tab2,8);
 //    triInsertion(tab3,6);
