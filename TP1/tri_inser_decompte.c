@@ -11,7 +11,7 @@ void triInsertion(long * A, size_t n){
         size_t j = i-1;
 
         p.nb_comp += 1; //comparaison boucle
-        p.nb_ecriture +=3;
+        p.nb_ecriture +=3;//i ,clé, j
 //        printf("Clé %ld à la position : %ld\n",cle,i);
         while(((j > j-1) || (j == 0)) && (A[j] > cle)){
 //            printf("    %ld à la position %ld, plus grand que %ld \n",A[j],j,cle);
@@ -19,15 +19,14 @@ void triInsertion(long * A, size_t n){
 //            printf("    Ecriture de %ld : ",A[j]);
 //            afficheTab(A,0,n);
             j--;
-            p.nb_comp += 4; //comparaison boucle + suivante
-            p.nb_ecriture +=2;;
+            p.nb_comp += 4; //comparaison boucle + la suivante du if
+            p.nb_ecriture ++;//j
             p.nb_ecriture_tab++;
             if(j+1 == 0){
                 break;
             }
         }
         A[j+1] = cle;
-        p.nb_ecriture++;
         p.nb_ecriture_tab++;
 //        printf("    Ecriture de la clé %ld : ",cle);
 //        afficheTab(A,0,n);
