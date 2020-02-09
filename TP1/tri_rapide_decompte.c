@@ -19,23 +19,29 @@ void sousTriRapide(long * A,size_t p, size_t r, perf* pe){
 size_t partition(long * A, size_t p, size_t r, perf* pe){
     pe->appels_partition +=1;
     long pivot = A[r-1]; //le pivot est le dernier élément du tableau
-    pe->nb_ecriture +=1;
 //    printf("Pivot %ld \n",pivot);
     size_t i = p;
-    pe->nb_ecriture +=1;
+
+    pe->nb_ecriture +=2;
+    pe->nb_alloc += sizeof(long) + sizeof(size_t);
+
     for (size_t j = p; j+2 <= r; j++){
-        pe->nb_comp += 1; //comparaison boucle
+
+        pe->nb_comp += 2; //comparaison boucle
         pe->nb_ecriture +=1; //incrémentation boucle
+
 //        printf("    i = %ld et A[i] = %ld   j = %ld et A[j] = %ld \n",i,A[i],j,A[j]);
-        pe->nb_comp += 1;
         if(A[j] <= pivot){
 //            printf("    Permutation de %ld et %ld : ",A[i],A[j]);
             long tmp = A[i];
             A[i] = A[j];
             A[j] = tmp;
-            pe->nb_echange +=1;
             i++;
-            pe->nb_ecriture +=1;
+
+            pe->nb_alloc += sizeof(long);
+            pe->nb_echange +=1;
+            pe->nb_ecriture +=4;
+            pe->nb_ecriture_tab +=2;
 //            afficheTab(A,p,r);
         }
     }
@@ -43,7 +49,11 @@ size_t partition(long * A, size_t p, size_t r, perf* pe){
     long tmp = A[i];
     A[i] = A[r-1];
     A[r-1] = tmp;
+
     pe->nb_echange +=1;
+    pe->nb_alloc += sizeof(long);
+    pe->nb_ecriture_tab +=2;
+    pe->nb_ecriture +=3;
 //    afficheTab(A,p,r);
     return i;
 }

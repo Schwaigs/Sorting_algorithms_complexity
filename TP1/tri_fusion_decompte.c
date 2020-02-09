@@ -30,7 +30,7 @@ void fusion(long* A, size_t debut, size_t milieu, size_t fin,perf* p){
     cpTab(A, Ag, debut,milieu);
     cpTab(A, Ad, milieu,fin);
 
-    //debut affichage
+//    debut affichage
 //    printf("## Fusion \n  taille du tableau à former : %ld \n  debut : %ld \n  milieu : %ld \n  fin : %ld \n  tableau complet :",(fin-debut),debut,milieu,fin);
 //    printf("  [");
 //    for(size_t i = debut;i<fin;i++){
