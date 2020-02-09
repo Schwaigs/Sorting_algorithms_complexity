@@ -5,13 +5,13 @@
 
 
 typedef struct p {
-    int nb_ecriture;
-    int nb_echange;
-    int nb_alloc;
-    int nb_ecriture_tab;
-    int nb_comp;
-    int appels_fusion;
-    int appels_partition;
+    unsigned long nb_ecriture;
+    unsigned long nb_echange;
+    unsigned long nb_alloc;
+    unsigned long nb_ecriture_tab;
+    unsigned long nb_comp;
+    unsigned long appels_fusion;
+    unsigned long appels_partition;
 } perf;
 
 perf init_perf();

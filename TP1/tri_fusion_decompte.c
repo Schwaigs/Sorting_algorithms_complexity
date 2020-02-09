@@ -2,10 +2,10 @@
 #include "tri_fusion_decompte.h"
 
 void triFusion(long* A, size_t taille){
-    printf("********* Tri par fusion **********\n");
     perf p = init_perf();
     sousTriFusion(A,0,taille,&p);
     //printTab(A,taille);
+    printf("********* Tri par fusion **********\n");
     printPerf(p);
 }
 
