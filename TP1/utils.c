@@ -83,11 +83,12 @@ perf init_perf() {
 }
 
 void printPerf(perf p){
-    printf("#-#-# performance #-#-#\n nombre d'écriture : %d\n"
-           "nombre d'écriture dans un tableau : %d\n"
-           "nombre d'échange : %d\n"
-           "nombre de comparaison : %d\n"
-           "nombre de fusion : %d\n"
-           "bit alloué : %d\n"
-           "nombre de partition : %d\n",p.nb_ecriture,p.nb_ecriture_tab,p.nb_echange,p.nb_comp,p.appels_fusion,p.nb_alloc,p.appels_partition);
+    printf("#-#-# performance #-#-#\n"
+           "nombre d'écriture : %ld\n"
+           "nombre d'écriture dans un tableau : %ld\n"
+           "nombre d'échange : %ld\n"
+           "nombre de comparaison : %ld\n"
+           "nombre de fusion : %ld\n"
+           "octet alloué : %ld\n"
+           "nombre de partition : %ld\n",p.nb_ecriture,p.nb_ecriture_tab,p.nb_echange,p.nb_comp,p.appels_fusion,p.nb_alloc,p.appels_partition);
 }
