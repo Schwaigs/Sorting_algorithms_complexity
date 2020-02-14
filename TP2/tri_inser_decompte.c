@@ -1,7 +1,9 @@
 #include "tri_inser_decompte.h"
 
 void triInsertion(long * A, size_t n){
-//    afficheTab(A,0,n);
+    printf("********* Tri par insertion **********\n");
+    printf("Tableau de départ :\n");
+    afficheTab(A,0,n);
     long cle;
     for( size_t i = 1; i <= n-1; i++){
         cle = A[i];
@@ -22,7 +24,6 @@ void triInsertion(long * A, size_t n){
 //        printf("    Ecriture de la clé %ld : ",cle);
 //        afficheTab(A,0,n);
     }
-//    printf("Tableau trié : ");
-//    afficheTab(A,0,n);
-    printf("********* Tri par insertion **********\n");
+    printf("Tableau de sortie :\n");
+    afficheTab(A,0,n);
 }
