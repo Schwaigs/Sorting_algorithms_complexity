@@ -1,0 +1,9 @@
+library(ggplot2)
+
+perf <- read.table("perf.dat", header = TRUE)
+
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) +
+geom_point() + geom_smooth() +
+ggtitle("mon super graphe") + facet_grid(. ~ type_tab)
+
+ggsave("graphe.png")
