@@ -43,9 +43,10 @@ size_t partition(long * A, size_t p, size_t r){
 }
 
 void triRapide(long * A, size_t n){
-//    afficheTab(A,0,n);
-    sousTriRapide(A,0,n);
-//    printf("Tableau trié : ");
-//    afficheTab(A,0,n);
     printf("********* Tri rapide **********\n");
+    printf("Tableau de départ :\n");
+    afficheTab(A,0,n);
+    sousTriRapide(A,0,n);
+    printf("Tableau de sortie :\n");
+    afficheTab(A,0,n);
 }

@@ -2,15 +2,18 @@
 #include "tri_fusion_decompte.h"
 
 void triFusion(long* A, size_t taille){
-    sousTriFusion(A,0,taille);
-    //printTab(A,taille);
     printf("********* Tri par fusion **********\n");
+    printf("Tableau de départ :\n");
+    printTab(A,taille);
+    sousTriFusion(A,0,taille);
+    printf("Tableau de sortie :\n");
+    printTab(A,taille);
 }
 
 void sousTriFusion(long* A, size_t debut, size_t fin){
     if (debut+1 < fin){
         size_t q = (size_t) ((debut+fin)/2);
-        //printf("# sousTriFusion \n taille du tableau : %ld \n moit : %ld \n",(fin-debut),q);
+//        printf("# sousTriFusion \n taille du tableau : %ld \n moit : %ld \n",(fin-debut),q);
         sousTriFusion(A,debut,q);
         sousTriFusion(A,q,fin);
         fusion(A,debut,q,fin);
