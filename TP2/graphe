@@ -7,3 +7,6 @@ geom_point() + geom_smooth() +
 ggtitle("mon super graphe") + facet_grid(. ~ type_tab)
 
 ggsave("graphe.png")
+
+ggplot(perf,aes(x=taille, y=temps, group=type_tab, colour=as.character(type_tab))) +
+geom_point() + geom_smooth() + ggtitle("Tri rapide par type de tableaux") 
