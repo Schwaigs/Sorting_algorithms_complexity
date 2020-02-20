@@ -31,7 +31,7 @@ void* threadRapide (void* arg){
 int main(int argc, char* argv[]) {
 
     if(argc != 6){
-        printf("Argument manquant : %s nom_tri taille_tab type_tab min max",argv[0]);
+        printf("Argument manquant : %s nom_tri taille_tab type_tab min max\n",argv[0]);
         exit(EXIT_FAILURE);
     }
     
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
             createDecroisTab(tab,taille,atoi(argv[4]),atoi(argv[5]));
             break;
         default:
-            printf("Argument type : [a : aleatoire] [c : croissant] [d : decroissant]");
+            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant]\n");
             exit(EXIT_FAILURE);
     }
 
@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
             pthread_create (&tri, NULL, threadRapide, &arg);
             break;
         default:
-            printf("Argument nom_tri : [i : insertion] [f : fusion] [r : rapide]");
+            printf("Argument n°2 nom_tri : [i : insertion] [f : fusion] [r : rapide]\n");
             exit(EXIT_FAILURE);
     }
 

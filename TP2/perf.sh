@@ -13,7 +13,7 @@ echo -e "iTest\ttaille\tmin\tmax\tnom_tri\ttype_tab\ttemps\tmem"
 for iTest in `seq 1 $rep`
 do
   taille=$((`od -An -N4 -tu < /dev/urandom` % $tailleMax ))
-  for nom_tri in 'i' 'f'
+  for nom_tri in 'r'
   do
     for type_tab in 'a' 'c' 'd'
     do
