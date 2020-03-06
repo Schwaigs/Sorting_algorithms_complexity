@@ -40,17 +40,17 @@ Suite des commandes, ou script, à exécuter pour produire les données.
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                |
 |----------------------|---------------------------|---------------------------|---------------------------|
-| Aléatoire            | ![plot](path/to/plot.png) | ![plot](TP2/Resultat/graphe_fusion_alea.png) | ![plot](path/to/plot.png) |
-| Trié                 | ![plot](path/to/plot.png) | ![plot](TP2/Resultat/graphe_fusion_crois.png) | ![plot](path/to/plot.png) |
-| Tri inversé          | ![plot](path/to/plot.png) | ![plot](TP2/Resultat/graphe_fusion_decrois.png) | ![plot](path/to/plot.png) |
+| Aléatoire            | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire.png)| ![plot](path/to/plot.png) |
+| Trié                 | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant.png) | ![plot](path/to/plot.png) |
+| Tri inversé          | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant.png) | ![plot](path/to/plot.png) |
 
 ### Consommation mémoire
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                |
 |----------------------|---------------------------|---------------------------|---------------------------|
-| Aléatoire            | ![plot](path/to/plot.png) | ![plot](TP2/Resultat/graphe_fusion_alea_mem.png) | ![plot](path/to/plot.png) |
-| Trié                 | ![plot](path/to/plot.png) | ![plot](TP2/Resultat/graphe_fusion_crois_mem.png) | ![plot](path/to/plot.png) |
-| Tri inversé          | ![plot](path/to/plot.png) | ![plot](TP2/Resultat/graphe_fusion_decrois_mem.png) | ![plot](path/to/plot.png) |
+| Aléatoire            | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire_mem.png) | ![plot](path/to/plot.png) |
+| Trié                 | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant_mem.png) | ![plot](path/to/plot.png) |
+| Tri inversé          | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant_mem.png) | ![plot](path/to/plot.png) |
 
 ### Analyse des résultats préalables
 
