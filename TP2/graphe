@@ -1,12 +1,8 @@
 library(ggplot2)
 
-perf <- read.table("perf.dat", header = TRUE)
+perf <- read.table("perf_inser_crois.dat", header = TRUE)
 
-ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) +
-geom_point() + geom_smooth() +
-ggtitle("mon super graphe") + facet_grid(. ~ type_tab)
+ggplot(perf,aes(x=taille, y=temps)) + geom_point() + geom_smooth() + ggtitle("Temps tri croissant sur tableau aléatoire")
 
-ggsave("graphe.png")
+ggsave("graphe_inser_croissant_+tests.png")
 
-ggplot(perf,aes(x=taille, y=temps, group=type_tab, colour=as.character(type_tab))) +
-geom_point() + geom_smooth() + ggtitle("Tri rapide par type de tableaux") 
