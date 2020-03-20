@@ -5,6 +5,7 @@
 #include "utils.h"
 #include "tri_fusion_decompte.h"
 #include "tri_inser_decompte.h"
+#include "tri_radix.h"
 
 struct argument{
     long* tab;
@@ -25,6 +26,11 @@ void* threadFusion (void* arg){
 void* threadRapide (void* arg){
     struct argument* argum = (struct argument*)arg;
     triRapide(argum->tab,argum->size);
+    pthread_exit(NULL);
+}
+void* threadRadix (void* arg){
+    struct argument* argum = (struct argument*)arg;
+    triRadix(argum->tab,argum->size);
     pthread_exit(NULL);
 }
 
@@ -74,8 +80,11 @@ int main(int argc, char* argv[]) {
         case 'r':
             pthread_create (&tri, NULL, threadRapide, &arg);
             break;
+        case 'x':
+            pthread_create (&tri, NULL, threadRadix, &arg);
+            break;
         default:
-            printf("Argument n°2 nom_tri : [i : insertion] [f : fusion] [r : rapide]\n");
+            printf("Argument n°2 nom_tri : [i : insertion] [f : fusion] [r : rapide] [x : radix]\n");
             exit(EXIT_FAILURE);
     }
 

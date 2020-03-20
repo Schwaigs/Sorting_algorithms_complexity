@@ -13,7 +13,7 @@ max=$4
 for iTest in `seq 1 $rep`
 do
   taille=$((`od -An -N4 -tu < /dev/urandom` % $tailleMax ))
-  for nom_tri in 'r'
+  for nom_tri in 'x'
   do
     for type_tab in 'd'
     do
