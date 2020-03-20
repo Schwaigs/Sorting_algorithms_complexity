@@ -133,11 +133,42 @@ ggsave("nom_du_tableau.png")
 ### Analyse des résultats préalables
 
 Explications précises et succinctes des résultats préalables.
+tri insertion :
+
+
+Tri fusion :
+
+
+Tri Rapide :
+
+
+Tri Radix :
+
+
+Remarque :
 
 ### Discussion des résultats préalables
 
 Explications précises et succinctes des limites des résultats
 préalables et ce qu'ils ne permettent pas de vérifier.
+tri insertion :
+
+Dans le pire des cas (tableau décroissant):
+    3(n-1) + 1/2 * (n-1)(n-2) + 2 = O(n²)
+    
+Dans le meilleur des cas (tableau croissant):
+    3(n-1) + 2(n-1) = 5(n-1) = O(n)
+
+Tri fusion :
+
+
+Tri Rapide :
+
+Le tri rapide à different defaut qui se revelant surtout lors du tri de tableau croissant, décroissant et constant
+
+Tri Radix :
+
+
 
 ## Etude approfondie
 
