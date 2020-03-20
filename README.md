@@ -40,17 +40,17 @@ Suite des commandes, ou script, à exécuter pour produire les données.
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                |
 |----------------------|---------------------------|---------------------------|---------------------------|
-| Aléatoire            | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire.png)| ![plot](path/to/plot.png) |
-| Trié                 | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant.png) | ![plot](path/to/plot.png) |
-| Tri inversé          | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant.png) | ![plot](path/to/plot.png) |
+| Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire.png)| ![plot](./TP2/Resultat/graphe_rapide_aleatoire_temps.png) |
+| Trié                 | ![plot](./TP2/Resultat/graphe_inser_croissant_temps.png)| ![plot](./TP2/Resultat/graphe_fusion_croissant.png) | ![plot](./TP2/Resultat/graphe_rapide_croissant_temps.png) |
+| Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_temps.png) |
 
 ### Consommation mémoire
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                |
 |----------------------|---------------------------|---------------------------|---------------------------|
-| Aléatoire            | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire_mem.png) | ![plot](path/to/plot.png) |
-| Trié                 | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant_mem.png) | ![plot](path/to/plot.png) |
-| Tri inversé          | ![plot](path/to/plot.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant_mem.png) | ![plot](path/to/plot.png) |
+| Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire_mem.png) | ![plot](/TP2/Resultat/graphe_rapide_aleatoire_mem.png) |
+| Trié                 | ![plot](./TP2/Resultat/graphe_inser_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_croissant_mem.png) |
+| Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_mem.png) |
 
 ### Analyse des résultats préalables
 
