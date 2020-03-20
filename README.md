@@ -133,7 +133,9 @@ ggsave("nom_du_tableau.png")
 ### Analyse des résultats préalables
 
 Explications précises et succinctes des résultats préalables.
-tri insertion :
+
+Tri insertion :
+
 Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer 
 seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre 
 beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran.
@@ -146,6 +148,15 @@ que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer.
 
 Tri fusion :
 
+Ce tri a un temps d'execution uniforme entre tout les type de tableau. Il est plutot efficace par rapport au tri par insertion
+sauf avec un tableau croissant ou il est beaucoup moins rapide (10x plus long).
+
+Cette version n'est pas encore tres optimisé niveau mémoire car c'est le plus gourmand de tous avec le radixSort. Il utilise
+13x plus de memoire que le tri par insertion et 1.3x plus que le tri rapide.
+
+Niveau amélioration, on réfléchir à changer ca maniere d'alouer de la memoire. Au lieu de créer un nouveau tableau à chaque subdivision process 
+créer juste un 2ieme tableau et faire les changement entre le tableau de base et ce tableau. Ainsi il pourrait utiliser seulement 2x plus
+de memoire que le tri par insertion.
 
 Tri Rapide :
 
@@ -159,7 +170,8 @@ Remarque :
 
 Explications précises et succinctes des limites des résultats
 préalables et ce qu'ils ne permettent pas de vérifier.
-tri insertion :
+
+Tri insertion :
 
 Dans le pire des cas (tableau décroissant):
     3(n-1) + 1/2 * (n-1)(n-2) + 2 = O(n²)
