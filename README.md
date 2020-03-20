@@ -116,6 +116,13 @@ ggsave("nom_du_tableau.png")
 
 ### Temps d'exécution
 
+Dans un premier temps, voici deux graphiques permettant de comparer les performances de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Le 2e  a été réalisé sans le tris insertion afin de pouvoir mieux voir les 3 autre. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
+
+| Tout les algorithmes de tris | Sans l'insertion |
+|------------------------------|-----------------|
+| ![plot](./TP2/Resultat/graphe_commun_temps.png) | ![plot](./TP2/Resultat/graphe_commun_sans_insertion_temps.png) |
+
+
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                | Tri Radix                 |
 |----------------------|---------------------------|---------------------------|---------------------------|---------------------------|
 | Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire.png)| ![plot](./TP2/Resultat/graphe_rapide_aleatoire_temps.png) | ![plot](./TP2/Resultat/graphe_radix_aleatoire_temps.png)|
@@ -123,6 +130,10 @@ ggsave("nom_du_tableau.png")
 | Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_temps.png) | ![plot](./TP2/Resultat/graphe_radix_decroissant_temps.png) |
 
 ### Consommation mémoire
+
+Tout d'abord, voici un graphique permettant de comparer la consommation mémoire de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
+
+![plot](./TP2/Resultat/graphe_commun_mem.png)
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                | Tri Radix                 |
 |----------------------|---------------------------|---------------------------|---------------------------|---------------------------|
