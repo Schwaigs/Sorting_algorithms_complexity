@@ -132,63 +132,70 @@ ggsave("nom_du_tableau.png")
 
 ### Analyse des résultats préalables
 
-Explications précises et succinctes des résultats préalables.
+Explications précises et succinctes des résultats préalables.  
+- Tri insertion :
 
-Tri insertion :
+    Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran.
 
-Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer 
-seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre 
-beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran.
+    Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
 
-Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le 
-tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
-
-Niveau amélioration on peut amélioré ce tri en en regardant directement où il doit pour ensuite le déplacer plutot 
-que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer. 
-
-Tri fusion :
-
-Ce tri a un temps d'execution uniforme entre tout les type de tableau. Il est plutot efficace par rapport au tri par insertion
-sauf avec un tableau croissant ou il est beaucoup moins rapide (10x plus long).
-
-Cette version n'est pas encore tres optimisé niveau mémoire car c'est le plus gourmand de tous avec le radixSort. Il utilise
-13x plus de memoire que le tri par insertion et 1.3x plus que le tri rapide.
-
-Niveau amélioration, on réfléchir à changer ca maniere d'alouer de la memoire. Au lieu de créer un nouveau tableau à chaque subdivision process 
-créer juste un 2ieme tableau et faire les changement entre le tableau de base et ce tableau. Ainsi il pourrait utiliser seulement 2x plus
-de memoire que le tri par insertion.
-
-Tri Rapide :
+    Niveau amélioration on peut amélioré ce tri en en regardant directement où il doit pour ensuite le déplacer plutot que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer.
 
 
-Tri Radix :
+- Tri fusion :
 
+    Ce tri a un temps d'execution uniforme entre tout les type de tableau. Il est plutot efficace par rapport au tri par insertion sauf avec un tableau croissant ou il est beaucoup moins rapide (10x plus long).
+
+    Cette version n'est pas encore tres optimisé niveau mémoire car c'est le plus gourmand de tous avec le radixSort. Il utilise 13x plus de memoire que le tri par insertion et 1.3x plus que le tri rapide.
+
+    Niveau amélioration, on réfléchir à changer ca maniere d'alouer de la memoire. Au lieu de créer un nouveau tableau à chaque subdivision process créer juste un 2ieme tableau et faire les changement entre le tableau de base et ce tableau. Ainsi il pourrait utiliser seulement 2x plus de memoire que le tri par insertion.
+
+
+- Tri Rapide :  
+    
+    Le tri rapide est plus efficace au niveau temps d'execution parmis ceux sur lesquels nous avons travailler, la seule exeception étant le tri insertion pour les tableaux déjà triés. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas ci que nous avons obtenu les meillleurs résultats.
+    
+    Au niveau de la consommation mémoire celle ci reste relativement contante quelque soit le type de tableau donné en paramètre.
+
+
+-  Tri Radix :
+
+    Le tri radix est assez efficace puisque son temps d'execution se rapproche fortement du tri fusion. Cependant, on note qu'il semble être un peu plus lent pour les tableaux aléatoire comparer aux croissants/décroissants.
+
+    Sa consommation est elle aussi constante quelque soit le tableau passé en paramètre. En effet, dans le code on utilise un unique malloc faisant exactement la taille du tableau à trié. Les autres tableaux utilisés faisant tous 10 cases de la taille d'un long, leur utilisation est négligable.
 
 Remarque :
 
 ### Discussion des résultats préalables
 
 Explications précises et succinctes des limites des résultats
-préalables et ce qu'ils ne permettent pas de vérifier.
+préalables et ce qu'ils ne permettent pas de vérifier.  
+- Tri insertion :
 
-Tri insertion :
-
-Dans le pire des cas (tableau décroissant):
-    3(n-1) + 1/2 * (n-1)(n-2) + 2 = O(n²)
+    Dans le pire des cas (tableau décroissant):
+        3(n-1) + 1/2 * (n-1)(n-2) + 2 = O(n²)
     
-Dans le meilleur des cas (tableau croissant):
-    3(n-1) + 2(n-1) = 5(n-1) = O(n)
+    Dans le meilleur des cas (tableau croissant):
+        3(n-1) + 2(n-1) = 5(n-1) = O(n)
 
-Tri fusion :
-
-
-Tri Rapide :
-
-Le tri rapide à different defaut qui se revelant surtout lors du tri de tableau croissant, décroissant et constant
-
-Tri Radix :
+- Tri fusion :
 
 
+- Tri Rapide :
+
+    Le tri rapide à different defaut qui se révelant surtout lors du tri de tableau croissant, décroissant et constant. En effet, le pivot étant toujours la dernière valeur du tableau, si notre tableau est déjà trié, alors l'algorithme va passé en revu tout le tableau et chaque appel récusif se fera sur un tableau de taille_k+1 égale à taille_k - 1. Le tri rapide est alors extrêmement lent sur ces cas de figures.
+
+    Pour résoudre ce problème plusieurs choix s'offrent à nous. Mélanger le tableau passé en paramètre pour effectuer le tri sur un aléatoire, choisir le pivot aléatoirement, prendre la médiane pour pivot... Nous avons choisit d'implémenter un pivot aléatoire ce qui a grandement optimisé notre algorithme.
+
+    Le pire cas que peut renconter le tri rapide est donc le tableau constant qui lui fait atteindre une compléxite de O(n²).
+
+- Tri Radix :
+
+    Le tri radix n'est à la base pas prévu pour des tableaux prennant des valeurs négatives en compte. En effet, le tri radix à l'effet inverse sur les valeurs négatives puisqu'il va les triés dans l'odre décroissant. Le résultat dans le cas d'un tableau mélant valeur négatives et positives n'est alors trié dans aucun des deux ordres. 
+    
+    La première solution à laquel nous avons pensé était de séparer le tableau en deux afin de trier les valeurs positives d'une part et les négatives de l'autre. Il s'agissait soit, d'inverser l'ordre de la partie négative à sa sortie, soit de modifier l'algo pour lui donner l'effet inverse. Enfin on aurait mis les deux parties bout à bout. Cependant, cette méthode semblait être gourmande en temps et en mémoire, c'est pourquoi nous avons appliqué autre chose.
+
+    La solution privilégiée fut d'étendre notre tableau gérant l'histogramme des valeurs à des chiffres négatifs. Ainsi au niveau consommation mémoire on utilise seulement 10 long en plus et il n'est pas nécessaire de séparer ou inverser notre tableau ce qui est beaucoup moins gourmand en temps.
 
 ## Etude approfondie
 
