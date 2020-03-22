@@ -35,6 +35,12 @@ void createAleaTab(long* A, size_t taille, long min,long max){
         A[i] = (long)(min + (rand() % (max - min)));
     }
 }
+void createUniTab(long* A, size_t taille, long min,long max){
+    long val = (long)(min + (rand() % (max - min)));
+    for(size_t i = 0;i<taille;i++){
+        A[i] = val;
+    }
+}
 void createCroisTab(long* A, size_t taille, long min,long max){
     int step = 1;
     int inter = 1;

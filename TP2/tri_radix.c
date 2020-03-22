@@ -5,16 +5,19 @@ void triRadix(long * A,size_t n){
     //On cherche le plus grand nombre et le plus petit nombre de notre tableau pour connaitre celui avec le plus de chiffre(= digit)
     long m = labs(chercheMaxMin(A, n));
 
-    //On créer le tableau qui va stocker le nouvel ordre temporairement de nos valeurs à chaque ittération de tris
-    long * newA = malloc(sizeof(long)*n);
+    //Si le tableau est constant il est déjà trié donc on ne déroulera pas l'algo
+    if(m != 0){
+        //On créer le tableau qui va stocker le nouvel ordre temporairement de nos valeurs à chaque ittération de tris
+        long * newA = malloc(sizeof(long)*n);
 
-    //On fait une occurence de tri par digit (unité, dizaines, centaines...)
-    //On en en base 10 donc à chaque boucle le digit est multiplié par 10
-    for (int digit = 1; m/digit > 0; digit *= 10){
-        triDigit(A, n, digit,newA);
+        //On fait une occurence de tri par digit (unité, dizaines, centaines...)
+        //On en en base 10 donc à chaque boucle le digit est multiplié par 10
+        for (int digit = 1; m/digit > 0; digit *= 10){
+            triDigit(A, n, digit,newA);
+        }
+        free(newA);
     }
     afficheTab(A,0,n);
-    free(newA);
 }
 
 long chercheMaxMin(long * A,size_t n){
@@ -29,6 +32,8 @@ long chercheMaxMin(long * A,size_t n){
     //on regarde lequel possède le plus grand nombre de chiffre avec la valeur absolue
     if(labs(max) > labs(min))
         return max;
+    else if (max == min)  //dans le cas d'un tableau constant
+        return 0;
     return min; 
 }
 

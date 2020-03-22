@@ -56,8 +56,11 @@ int main(int argc, char* argv[]) {
         case 'd':
             createDecroisTab(tab,taille,atoi(argv[4]),atoi(argv[5]));
             break;
+        case 'u':
+            createUniTab(tab,taille,atoi(argv[4]),atoi(argv[5]));
+            break;
         default:
-            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant]\n");
+            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant] [u : unique valeur]\n");
             exit(EXIT_FAILURE);
     }
 
