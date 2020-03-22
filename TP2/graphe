@@ -7,19 +7,3 @@ ggplot(perf,aes(x=taille, y=mem)) + geom_point() + geom_smooth() + ggtitle("Cons
 ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tableau et par tri hors insertion") + facet_grid(. ~ type_tab)
 
 ggsave("graphe_commun_sans_insertion_temps.png")
-
-
-./perf.sh 50 10000000 -100000 100000 | tee perf_radix_decrois.dat
-perf <- read.table("perf_radix_decrois.dat", header = TRUE)
-ggplot(perf,aes(x=taille, y=temps)) + geom_point() + geom_smooth() + ggtitle("Temps d'execution tri radix sur tableau decroissant")
-ggsave("graphe_radix_decroissant_temps.png")
-
-./perf.sh 50 10000000 -100000 100000 | tee perf_radix_crois.dat
-perf <- read.table("perf_radix_crois.dat", header = TRUE)
-ggplot(perf,aes(x=taille, y=temps)) + geom_point() + geom_smooth() + ggtitle("Temps d'execution tri radix sur tableau croissant")
-ggsave("graphe_radix_croissant_temps.png")
-
-./perf.sh 50 10000000 -100000 100000 | tee perf_radix_alea.dat
-perf <- read.table("perf_radix_alea.dat", header = TRUE)
-ggplot(perf,aes(x=taille, y=temps)) + geom_point() + geom_smooth() + ggtitle("Temps d'execution tri radix sur tableau aleatoire")
-ggsave("graphe_radix_aleatoire_temps.png")
