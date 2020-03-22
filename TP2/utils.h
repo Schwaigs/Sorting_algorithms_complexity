@@ -24,6 +24,7 @@ void afficheTab(long * A, size_t p, size_t q);
 
 /********************************** Gen Tab *********************************/
 void createAleaTab(long* A, size_t taille, long min,long max);
+void createUniTab(long* A, size_t taille, long min,long max);
 void createCroisTab(long* A, size_t taille, long min,long max);
 void createDecroisTab(long* A, size_t taille, long min,long max);
 #endif

@@ -116,11 +116,11 @@ ggsave("nom_du_tableau.png")
 
 ### Temps d'exécution
 
-Dans un premier temps, voici deux graphiques permettant de comparer les performances de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Le 2e  a été réalisé sans le tris insertion afin de pouvoir mieux voir les 3 autre. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
+Dans un premier temps, voici deux graphiques permettant de comparer les performances de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Le 2e a été réalisé sans le tris insertion et sans les tableaux à valeur unique afin de pouvoir mieux voir les 3 autre. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
 
-| Tout les algorithmes de tris | Sans l'insertion |
+| Tout les algorithmes de tris | Sans l'insertion et tableaux constants|
 |------------------------------|-----------------|
-| ![plot](./TP2/Resultat/graphe_commun_temps.png) | ![plot](./TP2/Resultat/graphe_commun_sans_insertion_temps.png) |
+| ![plot](./TP2/Resultat/graphe_commun_avec_uni_temps.png) | ![plot](./TP2/Resultat/graphe_commun_sans_insertion_temps.png) |
 
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                | Tri Radix                 |
@@ -128,25 +128,29 @@ Dans un premier temps, voici deux graphiques permettant de comparer les performa
 | Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire.png)| ![plot](./TP2/Resultat/graphe_rapide_aleatoire_temps.png) | ![plot](./TP2/Resultat/graphe_radix_aleatoire_temps.png)|
 | Trié                 | ![plot](./TP2/Resultat/graphe_inser_croissant_temps.png)| ![plot](./TP2/Resultat/graphe_fusion_croissant.png) | ![plot](./TP2/Resultat/graphe_rapide_croissant_temps.png) |  ![plot](./TP2/Resultat/graphe_radix_croissant_temps.png)|
 | Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_temps.png) | ![plot](./TP2/Resultat/graphe_radix_decroissant_temps.png) |
+| Valeur unique        | ![plot](./TP2/Resultat/graphe_inser_uni_temps.png) | ![plot](./TP2/Resultat/graphe_fusion_uni_temps.png) | ![plot](./TP2/Resultat/graphe_rapide_uni_temps.png) | ![plot](./TP2/Resultat/graphe_radix_uni_temps.png) |
 
 ### Consommation mémoire
 
-Tout d'abord, voici un graphique permettant de comparer la consommation mémoire de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
+Tout d'abord, voici deux graphique permettant de comparer la consommation mémoire de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Les tableaux à valeur unique sont sur un graphique à part car la consommation  du tri rapide est d'un ordre de grandeur beaucoup plus grand que les autres ce qui empèche de voir une différence. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
 
-![plot](./TP2/Resultat/graphe_commun_mem.png)
+| Tout les algorithmes de tris sans tableaux constant | Tout les algorithmes de tris sur tableaux constants |
+|------------------------------|-----------------|
+| ![plot](./TP2/Resultat/graphe_commun_mem.png) | ![plot](./TP2/Resultat/graphe_commun_uni_mem.png) |
 
 | Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                | Tri Radix                 |
 |----------------------|---------------------------|---------------------------|---------------------------|---------------------------|
 | Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_radix_aleatoire_mem.png)|
 | Trié                 | ![plot](./TP2/Resultat/graphe_inser_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_radix_croissant_mem.png)|
 | Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_radix_decroissant_mem.png)|
+| Valeur unique        | ![plot](./TP2/Resultat/graphe_inser_uni_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_uni_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_uni_mem.png) | ![plot](./TP2/Resultat/graphe_radix_uni_mem.png) |
 
 ### Analyse des résultats préalables
 
 Explications précises et succinctes des résultats préalables.  
 - Tri insertion :
 
-    Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran.
+    Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran. De plus, le tri insertion est aussi très efficace pour les tableau constant (ne contenant qu'une seule et même valeur dans toute les cases), puisque ce type de tableau est un cas particulier des tableaux triés.
 
     Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
 
@@ -164,14 +168,14 @@ Explications précises et succinctes des résultats préalables.
 
 - Tri Rapide :  
     
-    Le tri rapide est plus efficace au niveau temps d'execution parmis ceux sur lesquels nous avons travailler, la seule exeception étant le tri insertion pour les tableaux déjà triés. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas ci que nous avons obtenu les meillleurs résultats.
+    Le tri rapide est plus efficace au niveau temps d'execution parmis ceux sur lesquels nous avons travailler, la seule exeception étant le tri insertion pour les tableaux déjà triés. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas ci que nous avons obtenu les meillleurs résultats. Cependant, même si le tableau constant est un cas particulier ce ceux triés, le tri rapide n'est pas particulièrement efficace pour celà.
     
     Au niveau de la consommation mémoire celle ci reste relativement contante quelque soit le type de tableau donné en paramètre.
 
 
 -  Tri Radix :
 
-    Le tri radix est assez efficace puisque son temps d'execution se rapproche fortement du tri fusion. Cependant, on note qu'il semble être un peu plus lent pour les tableaux aléatoire comparer aux croissants/décroissants.
+    Le tri radix est assez efficace puisque son temps d'execution se rapproche fortement du tri fusion. Cependant, on note qu'il semble être un peu plus lent pour les tableaux aléatoire comparer aux croissants/décroissants. Le pire des cas étant pour lui les tableaux constant. Cependant, une amélioration simple pour y pallier est décrite dans la section "Discussion des résultats".
 
     Sa consommation est elle aussi constante quelque soit le tableau passé en paramètre. En effet, dans le code on utilise un unique malloc faisant exactement la taille du tableau à trié. Les autres tableaux utilisés faisant tous 10 cases de la taille d'un long, leur utilisation est négligable.
 
@@ -202,11 +206,13 @@ préalables et ce qu'ils ne permettent pas de vérifier.
 
 - Tri Radix :
 
-    Le tri radix n'est à la base pas prévu pour des tableaux prennant des valeurs négatives en compte. En effet, le tri radix à l'effet inverse sur les valeurs négatives puisqu'il va les triés dans l'odre décroissant. Le résultat dans le cas d'un tableau mélant valeur négatives et positives n'est alors trié dans aucun des deux ordres. 
+    Le tri radix n'est à la base pas prévu pour des tableaux prennant des valeurs négatives en compte. En effet, le tri radix à l'effet inverse sur les valeurs négatives puisqu'il va les triés dans l'odre décroissant. Le résultat dans le cas d'un tableau mélant valeur négatives et positives n'est alors trié dans aucun des deux ordres.
     
     La première solution à laquel nous avons pensé était de séparer le tableau en deux afin de trier les valeurs positives d'une part et les négatives de l'autre. Il s'agissait soit, d'inverser l'ordre de la partie négative à sa sortie, soit de modifier l'algo pour lui donner l'effet inverse. Enfin on aurait mis les deux parties bout à bout. Cependant, cette méthode semblait être gourmande en temps et en mémoire, c'est pourquoi nous avons appliqué autre chose.
 
     La solution privilégiée fut d'étendre notre tableau gérant l'histogramme des valeurs à des chiffres négatifs. Ainsi au niveau consommation mémoire on utilise seulement 10 long en plus et il n'est pas nécessaire de séparer ou inverser notre tableau ce qui est beaucoup moins gourmand en temps.
+
+    Enfin, le pire des cas pour le tri radix est le tableau constant. Cependant, ce dernier cas peut facilement être amélioré. En effet, au début de l'algorithme on cherche le minimum et le maximum du tableau pour connaitre le nombre de boucle à effectuer. Il suffit de comparer les deux et si les valeurs sont les mêmes c'est que le tableau est constant et donc déjà trié.
 
 ## Etude approfondie
 
