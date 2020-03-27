@@ -154,8 +154,6 @@ Explications précises et succinctes des résultats préalables.
 
     Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
 
-    Niveau amélioration on peut amélioré ce tri en en regardant directement où il doit pour ensuite le déplacer plutot que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer.
-
 
 - Tri fusion :
 
@@ -187,11 +185,17 @@ Explications précises et succinctes des limites des résultats
 préalables et ce qu'ils ne permettent pas de vérifier.  
 - Tri insertion :
 
+    Pour ce qui est de la complexité de l'algorithme de tri insertion, voici ce que l'on obtient :
+
     Dans le pire des cas (tableau décroissant):
         3(n-1) + 1/2 * (n-1)(n-2) + 2 = O(n²)
     
     Dans le meilleur des cas (tableau croissant):
         3(n-1) + 2(n-1) = 5(n-1) = O(n)
+
+    Niveau amélioration on peut amélioré ce tri en regardant directement où il doit placer la nouvelle valeur d'indice i avec un parcours pour ensuite faire le décalage plutot que de la déplacer cran par cran en remplaçant les valeurs à chaque fois jusqu'a ce qu'on ne puisse plus.
+
+    Le tri insertion étant particulièrement efficace pour les tableaux presque triés mais très lent pour le reste, il serait possible de l'utiliser en complément d'un autre tri. Ce tri ferais la première partie du travail et on lancerais ensuite le tri insertion pour optimiser le temps d'execution de la fin de l'algorithme.
 
 - Tri fusion :
 
@@ -218,9 +222,7 @@ préalables et ce qu'ils ne permettent pas de vérifier.
 
 ### Hypothèse
 
-
-
-Expression précise et succincte d'une hypothèse.
+Les tableaux qui possèdent une partie d'un certain type (croissant, décroissant, constant, aléatoire) et une deuxième d'un autre type sont optimisés pour le tri fusion car il utilise une partition. Comme d'autres tris sont plus performant que le tri fusion pour certains type de tableaux, le sont-ils aussi lors d'un mélange de type ? Ce mélange pourrait être hétérogène, c'est-à-dire, deux types de tableaux différents dans chaque partie, ou homogène, le même type dans les deux sous-parties mais qui au global ne correspond pas à un tableau de ce type (par exemple deux sous parties triés mais indépendantes).
 
 ### Protocole expérimental de vérification de l'hypothèse
 
