@@ -1,9 +1,36 @@
 library(ggplot2)
 
-perf <- read.table("perf_commun_sans_insertion.dat", header = TRUE)
+/-----Pour fusion rapide et radix
+perf <- read.table("perf_c_d.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant les types croissant et décroissant)
+ggsave("graphe_c_d.png")
 
-ggplot(perf,aes(x=taille, y=mem)) + geom_point() + geom_smooth() + ggtitle("Consommation mémoire tri radix sur tableau aléatoire")
+/-----Pour fusion rapide et radix
+perf <- read.table("perf_c_a.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant les types croissant et aléatoire)
+ggsave("graphe_c_a.png")
 
-ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tableau et par tri hors insertion") + facet_grid(. ~ type_tab)
+/-----Pour fusion et inser
+perf <- read.table("perf_c_u.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant les types croissant et constant)
+ggsave("graphe_c_u.png")
 
-ggsave("graphe_commun_sans_insertion_temps.png")
+/-----Pour fusion rapide et radix
+perf <- read.table("perf_d_a.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant les types décroissant et aléatoire)
+ggsave("graphe_d_a.png")
+
+/-----Pour fusion rapide radix et inser
+perf <- read.table("perf_c_c.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux de deux sous-parties croissantes)
+ggsave("graphe_c_c.png")
+
+/-----Pour fusion et inser
+perf <- read.table("perf_u_u.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux de deux sous-parties constantes)
+ggsave("graphe_u_u.png")
+
+/-----Pour fusion rapide et radix
+perf <- read.table("perf_d_d.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux de deux sous-parties décroissantes)
+ggsave("graphe_d_d.png")

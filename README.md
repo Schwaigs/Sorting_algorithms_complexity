@@ -53,13 +53,6 @@ fpu             : yes
 fpu_exception   : yes
 cpuid level     : 20
 wp              : yes
-flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse
-sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cp
-uid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2
-x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3
- invpcid_single pti tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpci
-d rtm cqm rdt_a rdseed adx smap intel_pt xsaveopt cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln
-pts
 bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs taa itlb_multihit
 bogomips        : 4396.18
 clflush size    : 64
@@ -70,11 +63,11 @@ power management:
 
 ### Description de la démarche systématique
 
-Notre workflow s'éxecute de la manière suivante:
+Notre workflow s'éxecute de la manière suivante:  
 execution de perf.sh avec la ligne suivante :
 
 ```
-./perf.sh <nbRepetition> <tailleTableau> <minVal> <maxVal>  >> <nom_du_fichier>
+./perf.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal>  >> <nom_du_fichier>
 ```
 On retrouvera des données dans le fichier créé de la maniere suivante :
 
@@ -236,6 +229,7 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - deux sous-parties croissantes
     - deux sous-parties constantes
     - partie croissante + partie constante
+  
 
 - Tri rapide :
 
@@ -244,10 +238,10 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
 
     - deux sous-parties croissantes
     - deux sous-parties décroissantes
-    - deux sous-parties aléatoires
     - partie croissante + partie décroissante
     - partie croissante + partie aléatoire
     - partie décroissante + partie aléatoire
+  
 
 - Tri radix :
 
@@ -256,28 +250,58 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     
     - deux sous-parties croissantes
     - deux sous-parties décroissantes
-    - deux sous-parties aléatoires
     - partie croissante + partie décroissante
     - partie croissante + partie aléatoire
     - partie décroissante + partie aléatoire
-
+  
+  
+Notre procèdure d'execution reste sensiblement la même qu'auparavant.  
+En premier lieu vient l'execution de perf.sh avec la ligne suivante :
 
 ```
-Suite des commandes, ou script, à exécuter pour produire les données.
+./perf.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal> <premierType> <deuxiemeType> >> <nom_du_fichier>
 ```
+
+On retrouvera des données dans le fichier créé de la maniere suivante :
+
+````$xslt
+**A COMPLETER**
+````
+
+Une fois les données verifié, on lance R et on tape les commande suivante :
+
+````$xslt
+library(ggplot2)
+````
+(import d'une librairie pour de plus beau graphique)
+
+````$xslt
+perf <- read.table("nom_du_fichier", header = TRUE)
+````
+(import des données)
+
+````$xslt
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("titre du tableau")
+````
+(créer un graphique à partir des données importé avec une courbe par tri)
+
+````$xslt
+ggsave("nom_du_tableau.png")
+````
+(créer une image a partir du graphique)  
+
 
 ### Résultats expérimentaux
 
 | Jeu de test                                | Temps d'execution par tris       |
 |--------------------------------------------|----------------------------------|
-| deux sous-parties aléatoires               | ![plot](./TP2/Resultat/plot.png) |
-| deux sous-parties croissantes              | ![plot](./TP2/Resultat/plot.png) |
-| deux sous-parties décroissantes            | ![plot](./TP2/Resultat/plot.png) |
-| deux sous-parties constantes               | ![plot](./TP2/Resultat/plot.png) |
-| partie croissante + partie décroissante    | ![plot](./TP2/Resultat/plot.png) |
-| partie croissante + partie aléatoire       | ![plot](./TP2/Resultat/plot.png) |
-| partie décroissante + partie aléatoire     | ![plot](./TP2/Resultat/plot.png) |
-| partie croissante + partie constante       | ![plot](./TP2/Resultat/plot.png) |
+| deux sous-parties croissantes              | ![plot](./TP2/Resultat/graphe_c_c.png) |
+| deux sous-parties décroissantes            | ![plot](./TP2/Resultat/graphe_d_d.png) |
+| deux sous-parties constantes               | ![plot](./TP2/Resultat/graphe_u_u.png) |
+| partie croissante + partie décroissante    | ![plot](./TP2/Resultat/graphe_c_d.png) |
+| partie croissante + partie aléatoire       | ![plot](./TP2/Resultat/graphe_c_a.png) |
+| partie décroissante + partie aléatoire     | ![plot](./TP2/Resultat/graphe_d_a.png) |
+| partie croissante + partie constante       | ![plot](./TP2/Resultat/graphe_c_u.png) |
 
 ### Analyse des résultats expérimentaux
 
