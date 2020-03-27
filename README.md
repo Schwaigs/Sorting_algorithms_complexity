@@ -6,7 +6,7 @@
 
 ## Problème
 
-Comment les differents algorithmes de tris fonctionnent-ils pour les différents cas ? A quoi leur efficacité et leur complexité sont-elles liées ?
+Comment les différents algorithmes de tri fonctionnent-ils pour les différents cas ? À quoi leur efficacité et leur complexité sont-elles liées ?
 
 ## Dispositif expérimental
 
@@ -16,22 +16,18 @@ Comment les differents algorithmes de tris fonctionnent-ils pour les différents
 ```
 ./main <nom_tri> <taille> <type_tab> <min> <max>
 ```
-Notre main permet de lancer n'importe quel tri sur n'importe quel type et taille de tableau. On peut
-aussi choisir la valeur minimal et maximal du tableau.
+Notre main permet de lancer n'importe quel tri sur n'importe quel type et taille de tableau. On peut aussi choisir les valeurs minimale et maximale du tableau.
 
 Type de tri possible : [i : insertion]  [f : fusion]  [r : rapide]  [x : radix]
 
 Type de tableau possible : [a : aleatoire]  [c : croissant]  [d : decroissant] [m : combineTab]
 
-La taille d'un tableau peut aller jusqu'a 2.147 milliard. De même que pour le min et le max avec les valeur
- negative possible pour le min.
+La taille d'un tableau peut aller jusqu'à 2.147 milliard. De même que pour le min et le max avec les valeurs négatives possibles pour le min.
 
 ### Environnement de test
 
-Tout les test on etait éffectué sur les serveur de l'iut et plus précisement sur phoenix.
-Phoenix est constitué de 40 coeurs ainsi que de 126Go de RAM. De plus phoenix est un serveur tres
-peu utilisé par l'iut. Il possede donc la capacité de faire simultanément plusieur tri sans qu'il 
-se derange pour autant.
+Tous les tests ont été éffectués sur les serveurs de l'iut et plus précisément sur phoenix.
+Phoenix est constitué de 40 coeurs ainsi que de 126Go de RAM. De plus phoenix est un serveur très peu utilisé par l'iut. Il possède donc la capacité de faire simultanément plusieurs tris sans qu'il se dérange pour autant.
 ```
 /proc/cpuinfo
 processor       : 39
@@ -63,13 +59,13 @@ power management:
 
 ### Description de la démarche systématique
 
-Notre workflow s'éxecute de la manière suivante:  
-Execution de perf.sh avec la ligne suivante :
+Notre workflow s'exécute de la manière suivante:  
+Exécution de perf.sh avec la ligne suivante :
 
 ```
 ./perf.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal>  >> <nom_du_fichier>
 ```
-On retrouvera des données dans le fichier créé de la maniere suivante :
+On retrouvera des données dans le fichier créé de la manière suivante :
 
 ````$xslt
 iTest	taille	min	max	nom_tri	type_tab	temps	mem
@@ -83,16 +79,17 @@ iTest	taille	min	max	nom_tri	type_tab	temps	mem
 ...
 ````
 
-Le script perf.sh nous permet de tirer aléatoirement une taille de tableau pour chaque répétition. On crée alors un tableau avec des valeurs contenues entre min et max que nous avons passés en lignes de commandes.
-On appel ensuite chaque algorithme de tri pour le type de tableau souhaité. Enfin, on récupère le temps d'execution et la consommation mémoire de chaque test.
+Le script perf.sh nous permet de tirer aléatoirement une taille de tableau pour chaque répétition. On crée alors un tableau avec des valeurs contenues entre min et max que nous avons passés en ligne de commandes.
+On appelle ensuite chaque algorithme de tri pour le type de tableau souhaité. Enfin, on récupère le temps d'exécution et la consommation mémoire de chaque test.
 
-Les paremètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
+Les paramètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
 Nombre de tests : 50  
-Taille maximale des tableaux : 100 000  
+Taille maximale des tableaux pour le 1e graphique : 100 000  
+Taille maximale des tableaux pour le 2e graphique du temps : 1 000 000  (afin de ne pas avoir d'artefact comme on travaille sur une plage d'ordonnées réduite)
 Valeur minimale : -10 000  
 Valeur maximale : 10 000 
 
-Une fois les données verifié, on lance R et on tape les commande suivante :
+Une fois les données verifiées, on lance R et on tape les commandes suivantes :
 
 ````$xslt
 library(ggplot2)
@@ -118,53 +115,50 @@ ggsave("nom_du_tableau.png")
 
 ### Temps d'exécution
 
-Dans un premier temps, voici deux graphiques permettant de comparer les performances de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Le 2e a été réalisé sans le tris insertion et sans les tableaux à valeur unique afin de pouvoir mieux voir les 3 autre. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
+Voici deux graphiques permettant de comparer les performances de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Le 2e a été réalisé sans le tri insertion et sans les tableaux à valeur unique afin de pouvoir mieux voir les 3 autres.
 
 | Tout les algorithmes de tris | Sans l'insertion et tableaux constants|
-|------------------------------|-----------------|
-| ![plot](./TP2/Resultat/graphe_commun_avec_uni_temps.png) | ![plot](./TP2/Resultat/graphe_commun_sans_insertion_temps.png) |
-
-![plot](./TP2/Resultat/graphe_facet_temps.png)
-
+|------------------------------|---------------------------------------|
+| ![plot](./TP2/Resultat/graphe_facet_temps.png) | ![plot](./TP2/Resultat/graphe_commun_sans_insertion_temps.png) |
 
 ### Consommation mémoire
 
-Tout d'abord, voici deux graphique permettant de comparer la consommation mémoire de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Les tableaux à valeur unique sont sur un graphique à part car la consommation  du tri rapide est d'un ordre de grandeur beaucoup plus grand que les autres ce qui empèche de voir une différence. Puis, des graphiques plus précis pour chaque cas se trouvent dans un tableau juste après.
+Voici deux graphiques permettant de comparer la consommation mémoire de nos 4 algorithmes selon les différents types de tableaux à l'aide d'une même échelle. Le 2e a été réalisé sans les tableaux constants car il explose pour le tri rapide, ainsi on peut mieux voir les 3 autres types de tableaux.
 
-| Tout les algorithmes de tris sans tableaux constant | Tout les algorithmes de tris sur tableaux constants |
-|------------------------------|-----------------|
-| ![plot](./TP2/Resultat/graphe_commun_mem.png) | ![plot](./TP2/Resultat/graphe_commun_uni_mem.png) |
+| Tout les algorithmes de tris | Sans les tableaux constants |
+|------------------------------|-----------------------------|
+| ![plot](./TP2/Resultat/graphe_facet_mem.png) | ![plot](./TP2/Resultat/graphe_commun_mem.png) |
 
-![plot](./TP2/Resultat/graphe_facet_mem.png)
+
 
 ### Analyse des résultats préalables
  
 - Tri insertion :
 
-    Niveau temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran. De plus, le tri insertion est aussi très efficace pour les tableau constant (ne contenant qu'une seule et même valeur dans toute les cases), puisque ce type de tableau est un cas particulier des tableaux triés.
+    Niveau temps d'exécution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de vérifier chaque element 2 à 2. Autrement sur d'autres tableaux comme aléatoire ou décroissant il va prendre beaucoup de temps, car si un élément est mal placé il va le déplacer cran par cran. De plus, le tri insertion est aussi très efficace pour les tableaux constants (ne contenant qu'une seule et même valeur dans toutes les cases), puisque ce type de tableau est un cas particulier des tableaux triés.
 
-    Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport aux autres tris.
+    Niveau mémoire, le tri insertion reste très optimisé. De par son fonctionnement il exécute le tri directement dans le tableau donné en entrée. Ainsi il consommera la mémoire de manière linéaire et en petite quantité par rapport aux autres tris.
 
 
 - Tri fusion :
 
-    Ce tri a un temps d'execution uniforme entre tout les type de tableau. Il est plutot efficace par rapport au tri par insertion sauf avec un tableau croissant ou il est beaucoup moins rapide (10x plus long).
+    Ce tri a un temps d'exécution uniforme entre tous les types de tableaux. Il est plutôt efficace par rapport au tri par insertion, sauf avec un tableau croissant où il est beaucoup moins rapide (10x plus long).
 
-    Cette version n'est pas encore tres optimisé niveau mémoire car c'est le plus gourmand de tous avec le radixSort. Il utilise 13x plus de memoire que le tri par insertion et 1.3x plus que le tri rapide.
+    Cette version n'est pas encore très optimisé niveau mémoire, car c'est le plus gourmand de tous avec le radixSort. Il utilise 13x plus de mémoire que le tri par insertion et 1.3x plus que le tri rapide.
 
 
 - Tri Rapide :  
     
-    Le tri rapide est plus efficace au niveau temps d'execution pour les tableaux aléatoires et décroissants. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas ci que nous avons obtenu les meillleurs résultats. Cependant, même si le tableau constant est un cas particulier ce ceux triés, le tri rapide n'est pas particulièrement efficace pour cela, il est même le tri le plus lent.
+    Le tri rapide est plus efficace au niveau temps d'exécution pour les tableaux aléatoires et décroissants. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas-ci que nous avons obtenu les meilleurs résultats. Cependant, même si le tableau constant est un cas particulier ce celui trié, le tri rapide n'est pas particulièrement efficace pour cela, il est même le tri le plus lent.
     
-    Au niveau de la consommation mémoire celle ci reste relativement contante,toutefois celle-ci explose quand on veut traiter un tableau constant.
+    Au niveau de la consommation mémoire celle-ci reste relativement constante, toutefois celle-ci explose quand on veut traiter un tableau constant.
 
 
 -  Tri Radix :
 
-    Le tri radix est assez efficace puisque son temps d'execution se rapproche fortement du tri fusion. Toutefois on note qu'il semble être un peu plus lent pour les tableaux aléatoire comparer aux croissants/décroissants. Le pire des cas étant pour lui les tableaux constants. Cependant, une amélioration simple pour y pallier est décrite dans la section "Discussion des résultats".
+    Le tri radix est assez efficace puisque son temps d'exécution se rapproche fortement du tri fusion. Toutefois, on note qu'il semble être un peu plus lent pour les tableaux aléatoires comparer aux croissants/décroissants. Le pire des cas étant pour lui les tableaux constants. Cependant, une amélioration simple pour y pallier est décrite dans la section "Discussion des résultats".
 
-    Sa consommation est elle aussi constante quelque soit le tableau passé en paramètre. En effet, dans le code on utilise un unique malloc faisant exactement la taille du tableau à trié. Les autres tableaux utilisés faisant tous 10 cases de la taille d'un long, leur utilisation est négligable.
+    Sa consommation est elle aussi constante quel que soit le tableau passé en paramètre. En effet, dans le code on utilise un unique malloc faisant exactement la taille du tableau à trier. Les autres tableaux utilisés faisant tous 10 cases de la taille d'un long, leur utilisation est négligeable.
 
 
 ### Discussion des résultats préalables
@@ -179,7 +173,7 @@ Tout d'abord, voici deux graphique permettant de comparer la consommation mémoi
     Dans le meilleur des cas (tableau croissant):
         3(n-1) + 2(n-1) = 5(n-1) = O(n)
 
-    Niveau amélioration on peut amélioré ce tri en regardant directement où il doit placer la nouvelle valeur d'indice i avec un parcours pour ensuite faire le décalage plutot que de la déplacer cran par cran en remplaçant les valeurs à chaque fois jusqu'a ce qu'on ne puisse plus.
+    Niveau amélioration on peut améliorer ce tri en regardant directement où il doit placer la nouvelle valeur d'indice i avec un parcours pour ensuite faire le décalage plutôt que de la déplacer cran par cran en remplaçant les valeurs à chaque fois jusqu'à ce qu'on ne puisse plus.
 
     Le tri insertion étant particulièrement efficace pour les tableaux presque triés mais très lent pour le reste, il serait possible de l'utiliser en complément d'un autre tri. Ce tri ferais la première partie du travail et on lancerais ensuite le tri insertion pour optimiser le temps d'execution de la fin de l'algorithme.
 
@@ -220,20 +214,16 @@ Les tableaux qui possèdent une partie d'un certain type (croissant, décroissan
 
 Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donnés les meilleurs résultats lors de la phase une pour crées les données et les tris que nous mettrons en concurences avec le tri fusion.
 
-- Tri insertion :
-
+- Tri insertion :  
     Le tri insertion est extrêmement efficace pour les tableaux croissants et constants mais vraiement très lent pour le reste. Ainsi on le testeras sur des tableaux suivants :
-
     - deux sous-parties croissantes
     - deux sous-parties constantes
     - partie croissante + partie constante
   
   
-- Tri rapide :
-
+- Tri rapide :  
     Le tri rapide est plus rapide que le fusion pour les tableaux aléatoires, croissants et décroissants.
     Ainsi on le testeras sur des tableaux suivants :
-
     - deux sous-parties croissantes
     - deux sous-parties décroissantes
     - partie croissante + partie décroissante
@@ -241,11 +231,9 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - partie décroissante + partie aléatoire
   
   
-- Tri radix :
-
+- Tri radix :  
     Le tri radix a un temps d'execution assez proche du fusion pour tout les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration éffectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
     Ainsi on le testeras sur des tableaux suivants :
-    
     - deux sous-parties croissantes
     - deux sous-parties décroissantes
     - partie croissante + partie décroissante
@@ -324,7 +312,7 @@ ggsave("nom_du_tableau.png")
   
 
 - Mélanges homogènes :
-    
+
     On observe sur le graphique du double tableau décroissant que l'ordre de temps d'execution est toujours conservé; du plus lent au plus rapide : fusion-radix-rapide. De plus, sur le tri d'un double tableau croissant, le tri par insertion se comporte beaucoup moins bien que sur un tableau totalement trié. Lors du tri d'un double tableau constant fusion semble bien rivaliser avec le tri par insertion et même legerement prendre le dessus.
     
     On peut aussi constater que pour le tri d'un tableau double croissant les courbes des tri fusion-radix et rapide se superpose.
@@ -335,7 +323,7 @@ ggsave("nom_du_tableau.png")
 
 - Mélanges hétérogènes :
 
-    La différence de temps d'execution du tri fusion est très faible par rapport à celui des deux autres. Cela pourrais s'expliquer notemment par le fait que les partitions de tri fusion prennent du temps en terme de copie des valeurs dans les nouveaux tableaux.
+    La différence de temps d'execution du tri fusion est très faible par rapport à celui des deux autres. Cela pourrais s'expliquer notemment par le fait que les partitions de tri fusion prennent du temps en terme de copie des valeurs dans les nouveaux tableaux, en effet il fait beaucoup plus d'accès mémoire que les autres algorithmes.
   
 
 - Mélanges homogènes :

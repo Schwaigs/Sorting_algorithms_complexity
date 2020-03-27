@@ -1,7 +1,6 @@
 library(ggplot2)
 
-perf <- read.table("perf_facet.dat", header = TRUE)
-ggplot(perf,aes(x=taille, y=mem, group=nom_tri, colour=nom_tri)) + geom_point() + geom_smooth() + ggtitle("Consommation mémoire par type de tableau et par tri") + facet_grid( nom_tri ~ type_tab)
-ggsave("graphe_facet_mem.png")
-
+perf <- read.table("perf_commun_sans_insertion.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=nom_tri)) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tableau et par tri hors insertion") + facet_grid( ~ type_tab)
+ggsave("graphe_commun_sans_insertion_temps.png")
 
