@@ -154,7 +154,7 @@ Explications précises et succinctes des résultats préalables.
 
     Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
 
-    Niveau amélioration on peut amélioré ce tri en en regardant directement où il doit pour ensuite le déplacer plutot que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer.
+    Niveau amélioration on peut amélioré ce tri en en regardant directement où il doit aller pour ensuite le déplacer plutot que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer.
 
 
 - Tri fusion :
