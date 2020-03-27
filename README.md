@@ -324,6 +324,10 @@ ggsave("nom_du_tableau.png")
   
 
 - Mélanges homogènes :
+    
+    On observe sur le graphique du double tableau décroissant que l'ordre de temps d'execution est toujours conservé; du plus lent au plus rapide : fusion-radix-rapide. De plus, sur le tri d'un double tableau croissant, le tri par insertion se comporte beaucoup moins bien que sur un tableau totalement trié. Lors du tri d'un double tableau constant fusion semble bien rivaliser avec le tri par insertion et même legerement prendre le dessus.
+    
+     Ainsi, comme nous l'avions conjecturé pour un double tableau constant le tri fusion semble prendre le dessus. Cependant la situation pour le double croissant et décroissant reste inchangé.
 
 ### Discussion des résultats expérimentaux
 
@@ -333,6 +337,8 @@ ggsave("nom_du_tableau.png")
   
 
 - Mélanges homogènes :
+
+    On peut remarquer un accroissement général de l'instabilité des l'algorithmes. En effet on peut remarquer que le tri par insertion sur un double tableau constant de 1 000 000 peut prendre 10 secondes comme 300. Cela peut surement provenir du fait que la séparation des deux "partie" du tableau est aléatoire.
 
 ## Conclusion et travaux futurs
 
