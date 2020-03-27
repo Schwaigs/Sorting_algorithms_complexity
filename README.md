@@ -260,14 +260,35 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - partie croissante + partie décroissante
     - partie croissante + partie aléatoire
     - partie décroissante + partie aléatoire
+
+
 ```
 Suite des commandes, ou script, à exécuter pour produire les données.
 ```
 
 ### Résultats expérimentaux
 
+| Jeu de test                                | Temps d'execution par tris       |
+|--------------------------------------------|----------------------------------|
+| deux sous-parties aléatoires               | ![plot](./TP2/Resultat/plot.png) |
+| deux sous-parties croissantes              | ![plot](./TP2/Resultat/plot.png) |
+| deux sous-parties décroissantes            | ![plot](./TP2/Resultat/plot.png) |
+| deux sous-parties constantes               | ![plot](./TP2/Resultat/plot.png) |
+| partie croissante + partie décroissante    | ![plot](./TP2/Resultat/plot.png) |
+| partie croissante + partie aléatoire       | ![plot](./TP2/Resultat/plot.png) |
+| partie décroissante + partie aléatoire     | ![plot](./TP2/Resultat/plot.png) |
+| partie croissante + partie constante       | ![plot](./TP2/Resultat/plot.png) |
+
 ### Analyse des résultats expérimentaux
 
 ### Discussion des résultats expérimentaux
 
 ## Conclusion et travaux futurs
+
+Les tests que nous avons fait dans le cadre de notre hypothèses pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 3 pistes d'améliorations que nous avons identifiées.
+
+Pour chaque jeu de test il serait pertinant de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant variée à l'aide de nombreux tests et en comparant sur des graphiques.
+
+De même, on pourrais étudier si l'ordre de nos sous-parties influent le temps d'execution. On doublerais alors notre jeu de test pour faire la distinction entre la première et la deuxième partie en inversant les types.
+
+Enfin, la consommation mémoire de nos tris est une données que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'executon sur lequel nous nous sommes concentrés.
