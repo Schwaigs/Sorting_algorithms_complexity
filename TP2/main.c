@@ -36,13 +36,14 @@ void* threadRadix (void* arg){
 
 int main(int argc, char* argv[]) {
 
-    if(argc != 6){
+    if(argc < 6){
         printf("Argument manquant : %s nom_tri taille_tab type_tab min max\n",argv[0]);
         exit(EXIT_FAILURE);
     }
     
     /********************* Gen Tab **********************/
     char *ptr;
+    char *ptr2
     long taille = strtol(argv[2],&ptr,10);
     long* tab = malloc(sizeof(long)*taille);
 
@@ -59,8 +60,11 @@ int main(int argc, char* argv[]) {
         case 'u':
             createUniTab(tab,taille,atoi(argv[4]),atoi(argv[5]));
             break;
+        case 'c':
+            createCombineTab(tab,taille,atoi(argv[4]),atoi(argv[5]),argv[6],argv[7],strtol(argv[8],&ptr2,10));
+            break;
         default:
-            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant] [u : unique valeur]\n");
+            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant] [u : unique valeur] [c : combineTab]\n");
             exit(EXIT_FAILURE);
     }
 
