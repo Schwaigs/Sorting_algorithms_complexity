@@ -212,11 +212,12 @@ Les tableaux qui possèdent une partie d'un certain type (croissant, décroissan
 
 ### Protocole expérimental de vérification de l'hypothèse
 
-Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donnés les meilleurs résultats lors de la phase une pour crées les données et les tris que nous mettrons en concurences avec le tri fusion.
+Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donnés les meilleurs résultats lors de la phase une pour crées les données et les tris que nous mettrons en concurrences avec le tri fusion.
 
 - Tri insertion :  
 
     Le tri insertion est extrêmement efficace pour les tableaux croissants et constants mais vraiement très lent pour le reste. Ainsi on le testeras sur des tableaux suivants :
+
     - deux sous-parties croissantes
     - deux sous-parties constantes
     - partie croissante + partie constante
@@ -224,7 +225,7 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
 &nbsp;
 - Tri rapide :  
 
-    Le tri rapide est plus rapide que le fusion pour les tableaux aléatoires, croissants et décroissants.
+    Le tri rapide est plus rapide que le tri fusion pour les tableaux aléatoires, croissants et décroissants.
     Ainsi on le testeras sur des tableaux suivants :
     - deux sous-parties croissantes
     - deux sous-parties décroissantes
@@ -235,8 +236,8 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
 &nbsp;
 - Tri radix :  
 
-    Le tri radix a un temps d'execution assez proche du fusion pour tout les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration éffectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
-    Ainsi on le testeras sur des tableaux suivants :
+    Le tri radix a un temps d'exécution assez proche du fusion pour tous les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration effectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
+    Ainsi on le testera sur des tableaux suivants :
     - deux sous-parties croissantes
     - deux sous-parties décroissantes
     - partie croissante + partie décroissante
@@ -244,33 +245,34 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - partie décroissante + partie aléatoire
   
   
-Notre procèdure d'execution reste sensiblement la même qu'auparavant.  
-En premier lieu vient l'execution de perf2.sh avec la ligne suivante :
+Notre procédure d'exécution reste sensiblement la même qu'auparavant.  
+En premier lieu vient l'exécution de perf2.sh avec la ligne suivante :
 
 ```
-./perf.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal> <premierType> <deuxiemeType> >> <nom_du_fichier>
+./perf2.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal> <premierType> <deuxiemeType> >> <nom_du_fichier>
 ```
 
-Les paremètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
+Les paramètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
 Nombre de tests : 30  
 Taille maximale des tableaux : 1 000 000  
 Valeur minimale : -10 000  
 Valeur maximale : 10 000  
 
-On retrouvera des données dans le fichier créé de la maniere suivante :
+On retrouvera des données dans le fichier créé de la manière suivante :
 
 ````$xslt
-iTest	taille	min	max	nom_tri	type_tab	indexChange	premierType	deuximeType	temps	mem
-1	222813	-10000	10000	f	m	15263	c	a	0.12	4856
-1	222813	-10000	10000	r	m	15263	c	a	0.07	3320
-1	222813	-10000	10000	x	m	15263	c	a	0.09	4740
-2	514531	-10000	10000	f	m	371204	c	a	0.23	9404
-2	514531	-10000	10000	r	m	371204	c	a	0.14	5628
-2	514531	-10000	10000	x	m	371204	c	a	0.18	9388
-3	616549	-10000	10000	f	m	82911	c	a	0.32	10940
+iTest  taille min    max    nom_tri    type_tab   indexChange    premierType    deuximeType    temps  mem
+1  222813 -10000 10000  f  m  15263  c  a  0.12   4856
+1  222813 -10000 10000  r  m  15263  c  a  0.07   3320
+1  222813 -10000 10000  x  m  15263  c  a  0.09   4740
+2  514531 -10000 10000  f  m  371204 c  a  0.23   9404
+2  514531 -10000 10000  r  m  371204 c  a  0.14   5628
+2  514531 -10000 10000  x  m  371204 c  a  0.18   9388
+3  616549 -10000 10000  f  m  82911  c  a  0.32   10940
+...
 ````
 
-Une fois les données verifié, on lance R et on tape les commande suivante :
+Une fois les données vérifié, on lance R et on tape les commande suivante :
 
 ````$xslt
 library(ggplot2)
@@ -309,14 +311,14 @@ ggsave("nom_du_tableau.png")
 
 - Mélanges hétérogènes :
 
-    On observe sur nos différents graphiques que le tri fusion qui se trouve être la courbe en rouge prends toujours plus de temps lors de son execution que les tris radix et rapide. Cependant, dans le cas d'un mélange croissant / constant, le tri fusion est alors bien plus rapide que le tri insertion.
+    On observe sur nos différents graphiques que le tri fusion qui se trouve être la courbe en rouge prends toujours plus de temps lors de son exécution que les tris radix et rapide. Cependant, dans le cas d'un mélange croissant / constant, le tri fusion est alors bien plus rapide que le tri insertion.
 
     Ainsi, même si le tri fusion semblait être mieux adapté aux tableaux mélangeant deux types de par sa technique de partition, il s'avère que les tris rapides et radix sont plus optimisés dans les cas sans partie constante.
   
 
 - Mélanges homogènes :
 
-    On observe sur le graphique du double tableau décroissant que l'ordre de temps d'execution est toujours conservé; du plus lent au plus rapide : fusion-radix-rapide. De plus, sur le tri d'un double tableau croissant, le tri par insertion se comporte beaucoup moins bien que sur un tableau totalement trié. Lors du tri d'un double tableau constant fusion semble bien rivaliser avec le tri par insertion et même legerement prendre le dessus.
+    On observe sur le graphique du double tableau décroissant que l'ordre de temps d'exécution est toujours conservé; du plus lent au plus rapide : fusion-radix-rapide. De plus, sur le tri d'un double tableau croissant, le tri par insertion se comporte beaucoup moins bien que sur un tableau totalement trié. Lors du tri d'un double tableau constant fusion semble bien rivaliser avec le tri par insertion et même légèrement prendre le dessus.
     
     On peut aussi constater que pour le tri d'un tableau double croissant les courbes des tri fusion-radix et rapide se superpose.
     
@@ -326,23 +328,23 @@ ggsave("nom_du_tableau.png")
 
 - Mélanges hétérogènes :
 
-    La différence de temps d'execution du tri fusion est très faible par rapport à celui des deux autres. Cela pourrais s'expliquer notemment par le fait que les partitions de tri fusion prennent du temps en terme de copie des valeurs dans les nouveaux tableaux, en effet il fait beaucoup plus d'accès mémoire que les autres algorithmes.
+    La différence de temps d'exécution du tri fusion est très faible par rapport à celui des deux autres. Cela pourrait s'expliquer notamment par le fait que les partitions de tri fusion prennent du temps en termes de copie des valeurs dans les nouveaux tableaux, en effet il fait beaucoup plus d'accès mémoire que les autres algorithmes.
   
 
 - Mélanges homogènes :
 
-    On peut remarquer un accroissement général de l'instabilité des l'algorithmes. En effet on peut remarquer que le tri par insertion sur un double tableau constant de 1 000 000 peut prendre 10 secondes comme 300. Cela peut surement provenir du fait que la séparation des deux "partie" du tableau est aléatoire.
+    On peut remarquer un accroissement général de l'instabilité dès l'algorithmes. En effet on peut remarquer que le tri par insertion sur un double tableau constant de 1 000 000 peut prendre 10 secondes comme 300. Cela peut surement provenir du fait que la séparation des deux "partie" du tableau est aléatoire.
 
 ## Conclusion et travaux futurs
 
 En conclusion, on constate que notre hypothèse a pu être validée pour certains mélanges. En effet, l'algorithme du tri fusion offre effectivement de moins bonnes performances que les autres dans les cas suivants : deux sous-parties décroissantes, partie croissante + partie décroissante, partie croissante + partie aléatoire, partie décroissante + partie aléatoire.
 
-Les tests que nous avons fait dans le cadre de notre hypothèses pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 4 pistes d'améliorations que nous avons identifiées.
+Les tests que nous avons fait dans le cadre de notre hypothèse pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 4 pistes d'améliorations que nous avons identifiées.
 
-- Pour chaque jeu de test il serait pertinant de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant variée à l'aide de nombreux tests et en comparant sur des graphiques.
+- Pour chaque jeu de test il serait pertinent de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant varier à l'aide de nombreux tests et en comparant sur des graphiques.
 
-- De même, on pourrais étudier si l'ordre de nos sous-parties influent le temps d'execution. On doublerais alors notre jeu de test pour faire la distinction entre la première et la deuxième partie en inversant les types.
+- De même, on pourrait étudier si l'ordre de nos sous-parties influent le temps d'exécution. On doublerait alors notre jeu de tests pour faire la distinction entre la première et la deuxième partie en inversant les types.
 
-- La consommation mémoire de nos tris est une données que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'executon sur lequel nous nous sommes concentrés.
+- La consommation mémoire de nos tris est une donnée que nous n'avons pas eu le temps d'aborder dans notre étude approfondie mais elle y a autant sa place que le temps d'exécution sur lequel nous nous sommes concentré.
 
 - Enfin, il serait aussi possible d'étudier le cas de tableaux composés de plus de 2 sous-parties.
