@@ -229,7 +229,7 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - deux sous-parties constantes
     - partie croissante + partie constante
   
-
+  
 - Tri rapide :
 
     Le tri rapide est plus rapide que le fusion pour les tableaux aléatoires, croissants et décroissants.
@@ -241,7 +241,7 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - partie croissante + partie aléatoire
     - partie décroissante + partie aléatoire
   
-
+  
 - Tri radix :
 
     Le tri radix a un temps d'execution assez proche du fusion pour tout les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration éffectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
@@ -262,10 +262,10 @@ En premier lieu vient l'execution de perf2.sh avec la ligne suivante :
 ```
 
 Les paremètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
-Nombre de tests : 30
-Taille maximale des tableaux : 1 000 000
-Valeur minimale : -10 000
-Valeur maximale : 10 000
+Nombre de tests : 30  
+Taille maximale des tableaux : 1 000 000  
+Valeur minimale : -10 000  
+Valeur maximale : 10 000  
 
 On retrouvera des données dans le fichier créé de la maniere suivante :
 
