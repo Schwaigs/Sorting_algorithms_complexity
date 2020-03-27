@@ -346,12 +346,12 @@ ggsave("nom_du_tableau.png")
  
  ## Conclusion et travaux futurs
  
- Les tests que nous avons fait dans le cadre de nos hypothèses pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 4 pistes d'améliorations que nous avons identifiées.
+ Les tests que nous avons fait dans le cadre de notre hypothèse pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 4 pistes d'améliorations que nous avons identifiées:
  
- Pour chaque jeu de test il serait pertinent de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant variée à l'aide de nombreux tests et en comparant sur des graphiques.
+ - Pour chaque jeu de test il serait pertinent de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant varier à l'aide de nombreux tests et en comparant sur des graphiques.
  
- De même, on pourrait étudier si l'ordre de nos sous-parties influent le temps d'exécution. On doublerait alors notre jeu de test pour faire la distinction entre la première et la deuxième partie en inversant les types.
+ - De même, on pourrait étudier si l'ordre de nos sous-parties influent le temps d'exécution. On doublerait alors notre jeu de tests pour faire la distinction entre la première et la deuxième partie en inversant les types.
  
- La consommation mémoire de nos tris est une donnée que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'exécution sur lequel nous nous sommes concentrés.
+ - La consommation mémoire de nos tris est une donnée que nous n'avons pas eu le temps d'aborder dans notre étude approfondie mais elle y a autant sa place que le temps d'exécution sur lequel nous nous sommes concentré.
  
- Enfin, il serait aussi possible d'étudier le cas de tableaux composés de plus de 2 sous-parties.
+ - Enfin, il serait aussi possible d'étudier le cas de tableaux composés de plus de 2 sous-parties.
