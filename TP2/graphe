@@ -34,3 +34,20 @@ ggsave("graphe_u_u.png")
 perf <- read.table("perf_d_d.dat", header = TRUE)
 ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux de deux sous-parties décroissantes)
 ggsave("graphe_d_d.png")
+
+/-----Partie double
+
+/-----Pour fusion rapide radix et insertion
+perf <- read.table("perf_c_c.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant 2 croissant")
+ggsave("graphe_c_c.png")
+
+/-----Pour fusion rapide insertion et radix
+perf <- read.table("perf_d_d.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant 2 décroissant")
+ggsave("graphe_d_d.png")
+
+/-----Pour fusion rapide insertion et radix
+perf <- read.table("perf_u_u.dat", header = TRUE)
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("Temps d'execution par type de tri pour les tableaux combinant 2 valeur constante")
+ggsave("graphe_u_u.png")
