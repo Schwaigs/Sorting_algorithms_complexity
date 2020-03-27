@@ -98,3 +98,46 @@ void printPerf(perf p){
            "octet alloué : %ld\n"
            "nombre de partition : %ld\n",p.nb_ecriture_tab,p.nb_ecriture,p.nb_echange,p.nb_comp,p.appels_fusion,p.nb_alloc,p.appels_partition);
 }
+
+
+/*
+ * permet de créer un tableau qui soit une combinaison de 2 type de tableau.
+ * Les types de tableau possible:
+ *      - c : croissant
+ *      - d : décroissant
+ *      - a : aléatoire
+ *      - u : valeur unique (constant)
+ */
+void createCombineTab(long* A, size_t taille, long min, long max, char firstType, char secondType, size_t change){
+    size_t index = 0;
+    char type = firstType;
+    size_t fin = change;
+    for(size_t i = 0;i<2;i++) {
+        switch (Type) {
+            case 'c':
+                createCroisTab(A[index], fin, min, max);
+                break;
+            case 'd':
+                createDecroisTab(A[index], fin, min, max);
+                break;
+            case 'a':
+                createAleaTab(A[index], fin, min, max);
+                break;
+            case 'u':
+                createUniTab(A[index], fin, min, max);
+                if (i==1){
+                    while(A[index-1]==A[index]){
+                        createUniTab(A[index], fin, min, max);
+                    }
+                }
+                break;
+            default:
+                printf("error: type de tableau inexistant");
+                exit(EXIT_FAILURE);
+                break;
+        }
+        index = change;
+        type = secondType;
+        fin = taille;
+    }
+}

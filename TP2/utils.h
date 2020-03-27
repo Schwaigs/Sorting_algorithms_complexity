@@ -27,4 +27,6 @@ void createAleaTab(long* A, size_t taille, long min,long max);
 void createUniTab(long* A, size_t taille, long min,long max);
 void createCroisTab(long* A, size_t taille, long min,long max);
 void createDecroisTab(long* A, size_t taille, long min,long max);
+
+void createCombineTab(long* A, size_t taille, long min, long max, char firstType, char secondType, size_t change);
 #endif
