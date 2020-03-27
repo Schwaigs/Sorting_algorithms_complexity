@@ -18,8 +18,8 @@
   - [ ] La section est pertinente.
   - [ ] La section n'est pas pertinente.
 - Environnement de test
-  - [ ] La section est pertinente, succincte et précise.
-  - [x] La section est pertinente.
+  - [x] La section est pertinente, succincte et précise.
+  - [ ] La section est pertinente.
   - [ ] La section n'est pas pertinente.
 - Description de la démarche systématique
   - [x] La section est pertinente, succincte et précise.
@@ -38,21 +38,21 @@
   - [ ] La section est pertinente.
   - [ ] La section n'est pas pertinente.
 - Protocole expérimental de vérification de l'hypothèse
-  - [ ] La section est pertinente, succincte et précise.
+  - [x] La section est pertinente, succincte et précise.
   - [ ] La section est pertinente.
-  - [x] La section n'est pas pertinente.
+  - [ ] La section n'est pas pertinente.
 - Analyse des résultats expérimentaux
-  - [ ] La section est pertinente, succincte et précise.
+  - [x] La section est pertinente, succincte et précise.
   - [ ] La section est pertinente.
-  - [x] La section n'est pas pertinente.
+  - [ ] La section n'est pas pertinente.
 - Discussion des résultats expérimentaux
-  - [ ] La section est pertinente, succincte et précise.
+  - [x] La section est pertinente, succincte et précise.
   - [ ] La section est pertinente.
-  - [x] La section n'est pas pertinente.
+  - [ ] La section n'est pas pertinente.
 - Conclusion et travaux futurs
-  - [ ] La section est pertinente, succincte et précise.
+  - [x] La section est pertinente, succincte et précise.
   - [ ] La section est pertinente.
-  - [x] La section n'est pas pertinente.
+  - [ ] La section n'est pas pertinente.
 
 ## Résultats 	
 - Nombre
@@ -90,14 +90,14 @@
   - [x]	L'hypothèse émise est difficile à prouver.
   - [ ]	L'hypothèse émise est facile à prouver.
 - Théorie
-  - [ ]	L'analyse de l'hypothèse se confronte à la théorie avec pertinence.
-  - [x]	L'analyse de l'hypothèse se confronte à la théorie.
+  - [x]	L'analyse de l'hypothèse se confronte à la théorie avec pertinence.
+  - [ ]	L'analyse de l'hypothèse se confronte à la théorie.
   - [ ]	L'analyse de l'hypothèse ne se confronte pas à la théorie.
 
 # Résultat
 
-- Total d'item « Excellent » (1 point) : 14
-- Total d'item « Satisfaisant » (0,5 point: 4
-- Total d'item « Insatisfaisant » (0 point) : 4
+- Total d'item « Excellent » (1 point) : 20
+- Total d'item « Satisfaisant » (0,5 point: 2
+- Total d'item « Insatisfaisant » (0 point) : 0
 
-- Note sur 22 :16
+- Note sur 22 :21
