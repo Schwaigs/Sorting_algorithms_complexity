@@ -19,7 +19,7 @@ do
   taille=$(($((`od -An -N4 -tu < /dev/urandom` % $(($tailleMax-4)) )) + 4 ))
   change=$((`od -An -N4 -tu < /dev/urandom` % $(($taille-2))))
   change=$(($change + 1))
-  for nom_tri in 'f'
+  for nom_tri in 'f' 'i'
   do
     for type_tab in 'm'
     do

@@ -6,7 +6,7 @@
 
 ## Problème
 
-Peut-on créer un algorithme de tri qui soit optimal en comparaison, temps d'execution et memoire utilisé
+Comment les differents algorithmes de tris fonctionnent-ils pour les différents cas ? A quoi leur efficacité et leur complexité sont-elles liées ?
 
 ## Dispositif expérimental
 
@@ -21,7 +21,7 @@ aussi choisir la valeur minimal et maximal du tableau.
 
 Type de tri possible : [i : insertion]  [f : fusion]  [r : rapide]  [x : radix]
 
-Type de tableau possible : [a : aleatoire]  [c : croissant]  [d : decroissant]
+Type de tableau possible : [a : aleatoire]  [c : croissant]  [d : decroissant] [m : combineTab]
 
 La taille d'un tableau peut aller jusqu'a 2.147 milliard. De même que pour le min et le max avec les valeur
  negative possible pour le min.
@@ -64,7 +64,7 @@ power management:
 ### Description de la démarche systématique
 
 Notre workflow s'éxecute de la manière suivante:  
-execution de perf.sh avec la ligne suivante :
+Execution de perf.sh avec la ligne suivante :
 
 ```
 ./perf.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal>  >> <nom_du_fichier>
@@ -82,6 +82,9 @@ iTest	taille	min	max	nom_tri	type_tab	temps	mem
 9	947720439	-1000	10000	f	c	412.85	21675896
 ...
 ````
+
+Le script perf.sh nous permet de tirer aléatoirement une taille de tableau pour chaque répétition. On crée alors un tableau avec des valeurs contenues entre min et max que nous avons passés en lignes de commandes.
+On appel ensuite chaque algorithme de tri pour le type de tableau souhaité. Enfin, on récupère le temps d'execution et la consommation mémoire de chaque test.
 
 Une fois les données verifié, on lance R et on tape les commande suivante :
 
@@ -139,8 +142,7 @@ Tout d'abord, voici deux graphique permettant de comparer la consommation mémoi
 | Valeur unique        | ![plot](./TP2/Resultat/graphe_inser_uni_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_uni_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_uni_mem.png) | ![plot](./TP2/Resultat/graphe_radix_uni_mem.png) |
 
 ### Analyse des résultats préalables
-
-Explications précises et succinctes des résultats préalables.  
+ 
 - Tri insertion :
 
     Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran. De plus, le tri insertion est aussi très efficace pour les tableau constant (ne contenant qu'une seule et même valeur dans toute les cases), puisque ce type de tableau est un cas particulier des tableaux triés.
@@ -168,12 +170,9 @@ Explications précises et succinctes des résultats préalables.
 
     Sa consommation est elle aussi constante quelque soit le tableau passé en paramètre. En effet, dans le code on utilise un unique malloc faisant exactement la taille du tableau à trié. Les autres tableaux utilisés faisant tous 10 cases de la taille d'un long, leur utilisation est négligable.
 
-Remarque :
 
 ### Discussion des résultats préalables
-
-Explications précises et succinctes des limites des résultats
-préalables et ce qu'ils ne permettent pas de vérifier.  
+ 
 - Tri insertion :
 
     Pour ce qui est de la complexité de l'algorithme de tri insertion, voici ce que l'on obtient :
@@ -230,7 +229,7 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - deux sous-parties constantes
     - partie croissante + partie constante
   
-
+  
 - Tri rapide :
 
     Le tri rapide est plus rapide que le fusion pour les tableaux aléatoires, croissants et décroissants.
@@ -242,7 +241,7 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - partie croissante + partie aléatoire
     - partie décroissante + partie aléatoire
   
-
+  
 - Tri radix :
 
     Le tri radix a un temps d'execution assez proche du fusion pour tout les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration éffectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
@@ -256,16 +255,29 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
   
   
 Notre procèdure d'execution reste sensiblement la même qu'auparavant.  
-En premier lieu vient l'execution de perf.sh avec la ligne suivante :
+En premier lieu vient l'execution de perf2.sh avec la ligne suivante :
 
 ```
 ./perf.sh <nbRepetition> <tailleMaxTableau> <minVal> <maxVal> <premierType> <deuxiemeType> >> <nom_du_fichier>
 ```
 
+Les paremètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
+Nombre de tests : 30  
+Taille maximale des tableaux : 1 000 000  
+Valeur minimale : -10 000  
+Valeur maximale : 10 000  
+
 On retrouvera des données dans le fichier créé de la maniere suivante :
 
 ````$xslt
-**A COMPLETER**
+iTest	taille	min	max	nom_tri	type_tab	indexChange	premierType	deuximeType	temps	mem
+1	222813	-10000	10000	f	m	15263	c	a	0.12	4856
+1	222813	-10000	10000	r	m	15263	c	a	0.07	3320
+1	222813	-10000	10000	x	m	15263	c	a	0.09	4740
+2	514531	-10000	10000	f	m	371204	c	a	0.23	9404
+2	514531	-10000	10000	r	m	371204	c	a	0.14	5628
+2	514531	-10000	10000	x	m	371204	c	a	0.18	9388
+3	616549	-10000	10000	f	m	82911	c	a	0.32	10940
 ````
 
 Une fois les données verifié, on lance R et on tape les commande suivante :
@@ -305,14 +317,32 @@ ggsave("nom_du_tableau.png")
 
 ### Analyse des résultats expérimentaux
 
+- Mélanges hétérogènes :
+
+    On observe sur nos différents graphiques que le tri fusion qui se trouve être la courbe en rouge prends toujours plus de temps lors de son execution que les tris radix et rapide. Cependant, dans le cas d'un mélange croissant / constant, le tri fusion est alors bien plus rapide que le tri insertion.
+
+    Ainsi, même si le tri fusion semblait être mieux adapté aux tableaux mélangeant deux types de par sa technique de partition, il s'avère que les tris rapides et radix sont plus optimisés dans les cas sans partie constante.
+  
+
+- Mélanges homogènes :
+
 ### Discussion des résultats expérimentaux
+
+- Mélanges hétérogènes :
+
+    La différence de temps d'execution du tri fusion est très faible par rapport à celui des deux autres. Cela pourrais s'expliquer notemment par le fait que les partitions de tri fusion prennent du temps en terme de copie des valeurs dans les nouveaux tableaux.
+  
+
+- Mélanges homogènes :
 
 ## Conclusion et travaux futurs
 
-Les tests que nous avons fait dans le cadre de notre hypothèses pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 3 pistes d'améliorations que nous avons identifiées.
+Les tests que nous avons fait dans le cadre de notre hypothèses pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 4 pistes d'améliorations que nous avons identifiées.
 
 Pour chaque jeu de test il serait pertinant de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant variée à l'aide de nombreux tests et en comparant sur des graphiques.
 
 De même, on pourrais étudier si l'ordre de nos sous-parties influent le temps d'execution. On doublerais alors notre jeu de test pour faire la distinction entre la première et la deuxième partie en inversant les types.
 
-Enfin, la consommation mémoire de nos tris est une données que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'executon sur lequel nous nous sommes concentrés.
+La consommation mémoire de nos tris est une données que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'executon sur lequel nous nous sommes concentrés.
+
+Enfin, il serait aussi possible d'étudier le cas de tableaux composés de plus de 2 sous-parties.
