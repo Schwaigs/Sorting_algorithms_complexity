@@ -19,12 +19,12 @@ do
   taille=$(($((`od -An -N4 -tu < /dev/urandom` % $(($tailleMax-4)) )) + 4 ))
   change=$((`od -An -N4 -tu < /dev/urandom` % $(($taille-2))))
   change=$(($change + 1))
-  for nom_tri in 'f'
+  (for nom_tri in 'i' 'x' 'r' 'f'
   do
     for type_tab in 'm'
     do
       res=`( /usr/bin/time -f "%U\t%M" ./main $nom_tri $taille $type_tab $min $max $ftype $stype $change > /dev/null ) 2>&1`
       echo -e "$iTest\t$taille\t$min\t$max\t$nom_tri\t$type_tab\t$change\t$ftype\t$stype\t$res"
     done
-  done
+  done) &
 done
