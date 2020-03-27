@@ -161,8 +161,6 @@ Explications précises et succinctes des résultats préalables.
 
     Cette version n'est pas encore tres optimisé niveau mémoire car c'est le plus gourmand de tous avec le radixSort. Il utilise 13x plus de memoire que le tri par insertion et 1.3x plus que le tri rapide.
 
-    Niveau amélioration, on réfléchir à changer ca maniere d'alouer de la memoire. Au lieu de créer un nouveau tableau à chaque subdivision process créer juste un 2ieme tableau et faire les changement entre le tableau de base et ce tableau. Ainsi il pourrait utiliser seulement 2x plus de memoire que le tri par insertion.
-
 
 - Tri Rapide :  
     
@@ -199,6 +197,9 @@ préalables et ce qu'ils ne permettent pas de vérifier.
 
 - Tri fusion :
 
+    Le tri fusion à 2 différent défaut. Tout d'abord le tri d'un tableau aléatoire et constant sera ~16% plus long que sur des tableaux croissant et décroissant. Ensuite ce tri est pour le moment tres gourmand en mémoire. En effet pour chaque subdivision il va créer un un nouveau tableau et donc rajouter uttiliser 2 tableau qui font chacun la moitié du tableau de la subdivision précédente.
+    
+    Pour résoudre le problème de la mémoire on peut implementer la solution suivante: Au lieu de recréer un tableau a chaque subdivision on pourrait juste recréer un seul tableau de la meme taille que le tableau à trié et trié les données de l'un vers l'autre à chaque subdivision. Un ainsi on utiliserai seulement le double de memoire que le tableau.
 
 - Tri Rapide :
 
