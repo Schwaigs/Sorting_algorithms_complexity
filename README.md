@@ -209,7 +209,7 @@ Voici deux graphiques permettant de comparer la consommation mémoire de nos 4 a
 
 ### Hypothèse
 
-Les tableaux qui possèdent une partie d'un certain type (croissant, décroissant, constant, aléatoire) et une deuxième d'un autre type sont optimisés pour le tri fusion car il utilise une partition. Comme d'autres tris sont plus performant que le tri fusion pour certains types de tableaux, on émet l'hypothèse qu'ils le seront aussi lors d'un mélange de type. Ce mélange pourrait être hétérogène, c'est-à-dire, deux types de tableaux différents dans chaque partie, ou homogène, le même type dans les deux sous-parties mais qui au global ne correspond pas à un tableau de ce type (par exemple deux sous parties triés mais indépendantes).
+Les tableaux qui possèdent une partie d'un certain type (croissant, décroissant, constant, aléatoire) et une deuxième d'un autre type sont optimisés pour le tri fusion car il utilise une partition. Comme d'autres tris sont plus performant que le tri fusion pour certains types de tableaux, on émet l'hypothèse qu'ils le seront aussi lors d'un mélange de type. Ce mélange pourrait être hétérogène, c'est-à-dire, un type de tableau différent dans chaque partie, ou homogène, le même type dans les deux sous-parties mais qui au global ne correspond pas à un tableau de ce type (par exemple deux sous parties triés mais indépendantes).
 
 ### Protocole expérimental de vérification de l'hypothèse
 
