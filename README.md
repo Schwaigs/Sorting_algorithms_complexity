@@ -86,6 +86,12 @@ iTest	taille	min	max	nom_tri	type_tab	temps	mem
 Le script perf.sh nous permet de tirer aléatoirement une taille de tableau pour chaque répétition. On crée alors un tableau avec des valeurs contenues entre min et max que nous avons passés en lignes de commandes.
 On appel ensuite chaque algorithme de tri pour le type de tableau souhaité. Enfin, on récupère le temps d'execution et la consommation mémoire de chaque test.
 
+Les paremètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
+Nombre de tests : 50  
+Taille maximale des tableaux : 100 000  
+Valeur minimale : -10 000  
+Valeur maximale : 10 000 
+
 Une fois les données verifié, on lance R et on tape les commande suivante :
 
 ````$xslt
@@ -118,13 +124,8 @@ Dans un premier temps, voici deux graphiques permettant de comparer les performa
 |------------------------------|-----------------|
 | ![plot](./TP2/Resultat/graphe_commun_avec_uni_temps.png) | ![plot](./TP2/Resultat/graphe_commun_sans_insertion_temps.png) |
 
+![plot](./TP2/Resultat/graphe_facet_temps.png)
 
-| Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                | Tri Radix                 |
-|----------------------|---------------------------|---------------------------|---------------------------|---------------------------|
-| Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire.png)| ![plot](./TP2/Resultat/graphe_rapide_aleatoire_temps.png) | ![plot](./TP2/Resultat/graphe_radix_aleatoire_temps.png)|
-| Trié                 | ![plot](./TP2/Resultat/graphe_inser_croissant_temps.png)| ![plot](./TP2/Resultat/graphe_fusion_croissant.png) | ![plot](./TP2/Resultat/graphe_rapide_croissant_temps.png) |  ![plot](./TP2/Resultat/graphe_radix_croissant_temps.png)|
-| Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_temps.png) | ![plot](./TP2/Resultat/graphe_radix_decroissant_temps.png) |
-| Valeur unique        | ![plot](./TP2/Resultat/graphe_inser_uni_temps.png) | ![plot](./TP2/Resultat/graphe_fusion_uni_temps.png) | ![plot](./TP2/Resultat/graphe_rapide_uni_temps.png) | ![plot](./TP2/Resultat/graphe_radix_uni_temps.png) |
 
 ### Consommation mémoire
 
@@ -134,20 +135,15 @@ Tout d'abord, voici deux graphique permettant de comparer la consommation mémoi
 |------------------------------|-----------------|
 | ![plot](./TP2/Resultat/graphe_commun_mem.png) | ![plot](./TP2/Resultat/graphe_commun_uni_mem.png) |
 
-| Jeu de test          | Tri par Insertion         | Tri Fusion                | Tri Rapide                | Tri Radix                 |
-|----------------------|---------------------------|---------------------------|---------------------------|---------------------------|
-| Aléatoire            | ![plot](./TP2/Resultat/graphe_inser_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_aleatoire_mem.png) | ![plot](./TP2/Resultat/graphe_radix_aleatoire_mem.png)|
-| Trié                 | ![plot](./TP2/Resultat/graphe_inser_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_croissant_mem.png) | ![plot](./TP2/Resultat/graphe_radix_croissant_mem.png)|
-| Tri inversé          | ![plot](./TP2/Resultat/graphe_inser_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_decroissant_mem.png) | ![plot](./TP2/Resultat/graphe_radix_decroissant_mem.png)|
-| Valeur unique        | ![plot](./TP2/Resultat/graphe_inser_uni_mem.png) | ![plot](./TP2/Resultat/graphe_fusion_uni_mem.png) | ![plot](./TP2/Resultat/graphe_rapide_uni_mem.png) | ![plot](./TP2/Resultat/graphe_radix_uni_mem.png) |
+![plot](./TP2/Resultat/graphe_facet_mem.png)
 
 ### Analyse des résultats préalables
  
 - Tri insertion :
 
-    Niveau du temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran. De plus, le tri insertion est aussi très efficace pour les tableau constant (ne contenant qu'une seule et même valeur dans toute les cases), puisque ce type de tableau est un cas particulier des tableaux triés.
+    Niveau temps d'execution, le tri par insertion va être le plus rapide pour trier un tableau trié. Il va consommer seulement le temps de verifier chaque element 2 à 2. Autrement sur d'autre tableau comme aléatoire ou décroissant il va prendre beaucoup de temps car si un élément est mal placé il va le déplacer cran par cran. De plus, le tri insertion est aussi très efficace pour les tableau constant (ne contenant qu'une seule et même valeur dans toute les cases), puisque ce type de tableau est un cas particulier des tableaux triés.
 
-    Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
+    Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport aux autres tris.
 
 
 - Tri fusion :
@@ -159,14 +155,14 @@ Tout d'abord, voici deux graphique permettant de comparer la consommation mémoi
 
 - Tri Rapide :  
     
-    Le tri rapide est plus efficace au niveau temps d'execution parmis ceux sur lesquels nous avons travailler, la seule exeception étant le tri insertion pour les tableaux déjà triés. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas ci que nous avons obtenu les meillleurs résultats. Cependant, même si le tableau constant est un cas particulier ce ceux triés, le tri rapide n'est pas particulièrement efficace pour celà.
+    Le tri rapide est plus efficace au niveau temps d'execution pour les tableaux aléatoires et décroissants. Ce tri est particulièrement efficace sur des tableaux croissants, en effet c'est dans ce cas ci que nous avons obtenu les meillleurs résultats. Cependant, même si le tableau constant est un cas particulier ce ceux triés, le tri rapide n'est pas particulièrement efficace pour cela, il est même le tri le plus lent.
     
-    Au niveau de la consommation mémoire celle ci reste relativement contante quelque soit le type de tableau donné en paramètre.
+    Au niveau de la consommation mémoire celle ci reste relativement contante,toutefois celle-ci explose quand on veut traiter un tableau constant.
 
 
 -  Tri Radix :
 
-    Le tri radix est assez efficace puisque son temps d'execution se rapproche fortement du tri fusion. Cependant, on note qu'il semble être un peu plus lent pour les tableaux aléatoire comparer aux croissants/décroissants. Le pire des cas étant pour lui les tableaux constant. Cependant, une amélioration simple pour y pallier est décrite dans la section "Discussion des résultats".
+    Le tri radix est assez efficace puisque son temps d'execution se rapproche fortement du tri fusion. Toutefois on note qu'il semble être un peu plus lent pour les tableaux aléatoire comparer aux croissants/décroissants. Le pire des cas étant pour lui les tableaux constants. Cependant, une amélioration simple pour y pallier est décrite dans la section "Discussion des résultats".
 
     Sa consommation est elle aussi constante quelque soit le tableau passé en paramètre. En effet, dans le code on utilise un unique malloc faisant exactement la taille du tableau à trié. Les autres tableaux utilisés faisant tous 10 cases de la taille d'un long, leur utilisation est négligable.
 
@@ -193,9 +189,12 @@ Tout d'abord, voici deux graphique permettant de comparer la consommation mémoi
     
     Pour résoudre le problème de la mémoire on peut implementer la solution suivante: Au lieu de recréer un tableau a chaque subdivision on pourrait juste recréer un seul tableau de la meme taille que le tableau à trié et trié les données de l'un vers l'autre à chaque subdivision. Un ainsi on utiliserai seulement le double de memoire que le tableau.
 
+    Pour la compléxité du tri fusion, on fait 2 appels récurssifs à sousTriFusion avec à chaque fois une taille environ égale à n/2. Ainsi on a=2 et b=2. Puis dans fusion on effectue 4n opération ce qui correspond à un ordre de grandeur de n¹ donc c=1.
+    2(n/2) + O(n¹) = O(n log(n))
+
 - Tri Rapide :
 
-    Le tri rapide à different defaut qui se révelant surtout lors du tri de tableau croissant, décroissant et constant. En effet, le pivot étant toujours la dernière valeur du tableau, si notre tableau est déjà trié, alors l'algorithme va passé en revu tout le tableau et chaque appel récusif se fera sur un tableau de taille_k+1 égale à taille_k - 1. Le tri rapide est alors extrêmement lent sur ces cas de figures.
+    Le tri rapide à different defaut qui se révelent surtout lors du tri de tableau croissant, décroissant et constant. En effet, le pivot étant toujours la dernière valeur du tableau, si notre tableau est déjà trié, alors l'algorithme va passé en revu tout le tableau et chaque appel récusif se fera sur un tableau de taille_k+1 égale à taille_k - 1. Le tri rapide est alors extrêmement lent sur ces cas de figures.
 
     Pour résoudre ce problème plusieurs choix s'offrent à nous. Mélanger le tableau passé en paramètre pour effectuer le tri sur un aléatoire, choisir le pivot aléatoirement, prendre la médiane pour pivot... Nous avons choisit d'implémenter un pivot aléatoire ce qui a grandement optimisé notre algorithme.
 
@@ -293,7 +292,7 @@ perf <- read.table("nom_du_fichier", header = TRUE)
 (import des données)
 
 ````$xslt
-ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=as.character(nom_tri))) + geom_point() + geom_smooth() + ggtitle("titre du tableau")
+ggplot(perf,aes(x=taille, y=temps, group=nom_tri, colour=nom_tri)) + geom_point() + geom_smooth() + ggtitle("titre du tableau")
 ````
 (créer un graphique à partir des données importé avec une courbe par tri)
 
