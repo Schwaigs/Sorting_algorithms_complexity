@@ -227,8 +227,39 @@ Les tableaux qui possèdent une partie d'un certain type (croissant, décroissan
 
 ### Protocole expérimental de vérification de l'hypothèse
 
-Expression précise et succincte du protocole.
+Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donnés les meilleurs résultats lors de la phase une pour crées les données et les tris que nous mettrons en concurences avec le tri fusion.
 
+- Tri insertion :
+
+    Le tri insertion est extrêmement efficace pour les tableaux croissants et constants mais vraiement très lent pour le reste. Ainsi on le testeras sur des tableaux suivants :
+
+    - deux sous-parties croissantes
+    - deux sous-parties constantes
+    - partie croissante + partie constante
+
+- Tri rapide :
+
+    Le tri rapide est plus rapide que le fusion pour les tableaux aléatoires, croissants et décroissants.
+    Ainsi on le testeras sur des tableaux suivants :
+
+    - deux sous-parties croissantes
+    - deux sous-parties décroissantes
+    - deux sous-parties aléatoires
+    - partie croissante + partie décroissante
+    - partie croissante + partie aléatoire
+    - partie décroissante + partie aléatoire
+
+- Tri radix :
+
+    Le tri radix a un temps d'execution assez proche du fusion pour tout les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration éffectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
+    Ainsi on le testeras sur des tableaux suivants :
+    
+    - deux sous-parties croissantes
+    - deux sous-parties décroissantes
+    - deux sous-parties aléatoires
+    - partie croissante + partie décroissante
+    - partie croissante + partie aléatoire
+    - partie décroissante + partie aléatoire
 ```
 Suite des commandes, ou script, à exécuter pour produire les données.
 ```
