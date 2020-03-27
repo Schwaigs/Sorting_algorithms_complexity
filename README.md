@@ -85,7 +85,7 @@ On appelle ensuite chaque algorithme de tri pour le type de tableau souhaité. E
 Les paramètres que nous utilisons sont toujours les mêmes et ont été définis comme suit :  
 Nombre de tests : 50  
 Taille maximale des tableaux pour le 1e graphique : 100 000  
-Taille maximale des tableaux pour le 2e graphique du temps : 1 000 000  (afin de ne pas avoir d'artefact comme on travaille sur une plage d'ordonnées réduite)
+Taille maximale des tableaux pour le 2e graphique du temps : 1 000 000  (afin de ne pas avoir d'artefact comme on travaille sur une plage d'ordonnées réduite)  
 Valeur minimale : -10 000  
 Valeur maximale : 10 000 
 
@@ -208,20 +208,22 @@ Voici deux graphiques permettant de comparer la consommation mémoire de nos 4 a
 
 ### Hypothèse
 
-Les tableaux qui possèdent une partie d'un certain type (croissant, décroissant, constant, aléatoire) et une deuxième d'un autre type sont optimisés pour le tri fusion car il utilise une partition. Comme d'autres tris sont plus performant que le tri fusion pour certains type de tableaux, le sont-ils aussi lors d'un mélange de type ? Ce mélange pourrait être hétérogène, c'est-à-dire, deux types de tableaux différents dans chaque partie, ou homogène, le même type dans les deux sous-parties mais qui au global ne correspond pas à un tableau de ce type (par exemple deux sous parties triés mais indépendantes).
+Les tableaux qui possèdent une partie d'un certain type (croissant, décroissant, constant, aléatoire) et une deuxième d'un autre type sont optimisés pour le tri fusion car il utilise une partition. Comme d'autres tris sont plus performant que le tri fusion pour certains type de tableaux, on émet l'hypothèse qu'ils le seront aussi lors d'un mélange de type. Ce mélange pourrait être hétérogène, c'est-à-dire, deux types de tableaux différents dans chaque partie, ou homogène, le même type dans les deux sous-parties mais qui au global ne correspond pas à un tableau de ce type (par exemple deux sous parties triés mais indépendantes).
 
 ### Protocole expérimental de vérification de l'hypothèse
 
 Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donnés les meilleurs résultats lors de la phase une pour crées les données et les tris que nous mettrons en concurences avec le tri fusion.
 
 - Tri insertion :  
+
     Le tri insertion est extrêmement efficace pour les tableaux croissants et constants mais vraiement très lent pour le reste. Ainsi on le testeras sur des tableaux suivants :
     - deux sous-parties croissantes
     - deux sous-parties constantes
     - partie croissante + partie constante
-  
-  
+
+&nbsp;
 - Tri rapide :  
+
     Le tri rapide est plus rapide que le fusion pour les tableaux aléatoires, croissants et décroissants.
     Ainsi on le testeras sur des tableaux suivants :
     - deux sous-parties croissantes
@@ -230,8 +232,9 @@ Nous allons nous concentrer sur les types de tableaux et tris qui nous ont donn�
     - partie croissante + partie aléatoire
     - partie décroissante + partie aléatoire
   
-  
+&nbsp;
 - Tri radix :  
+
     Le tri radix a un temps d'execution assez proche du fusion pour tout les type de tableau et il est plus rapide pour les constants. Cependant l'amélioration éffectuée pour les tableaux constants ne va pas fonctionner pour les mélanges de types car elle se base de la comparaison du plus grand et du plus petit élément du tableau. On peut donc éliminer ce type qui nous donneras forcément des résultats moins bons que ceux du fusion.
     Ainsi on le testeras sur des tableaux suivants :
     - deux sous-parties croissantes
@@ -317,7 +320,7 @@ ggsave("nom_du_tableau.png")
     
     On peut aussi constater que pour le tri d'un tableau double croissant les courbes des tri fusion-radix et rapide se superpose.
     
-    Ainsi, comme nous l'avions conjecturé pour un double tableau constant le tri fusion semble prendre le dessus. Cependant la situation pour le double croissant et décroissant reste inchangé.
+    Ainsi, comme nous l'avions conjecturé pour un double tableau constant le tri fusion semble prendre le dessus quand la taille augmente. Cependant la situation pour le double croissant et décroissant reste inchangé.
 
 ### Discussion des résultats expérimentaux
 
@@ -332,12 +335,14 @@ ggsave("nom_du_tableau.png")
 
 ## Conclusion et travaux futurs
 
+En conclusion, on constate que notre hypothèse a pu être validée pour certains mélanges. En effet, l'algorithme du tri fusion offre effectivement de moins bonnes performances que les autres dans les cas suivants : deux sous-parties décroissantes, partie croissante + partie décroissante, partie croissante + partie aléatoire, partie décroissante + partie aléatoire.
+
 Les tests que nous avons fait dans le cadre de notre hypothèses pourraient être améliorés dans des travaux futurs. En effet, il reste de nombreuses choses que nous n'avons pas eu le temps de traiter. Voici donc 4 pistes d'améliorations que nous avons identifiées.
 
-Pour chaque jeu de test il serait pertinant de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant variée à l'aide de nombreux tests et en comparant sur des graphiques.
+- Pour chaque jeu de test il serait pertinant de comparer l'influence de la position de séparation entre les deux sous-parties du tableau en la faisant variée à l'aide de nombreux tests et en comparant sur des graphiques.
 
-De même, on pourrais étudier si l'ordre de nos sous-parties influent le temps d'execution. On doublerais alors notre jeu de test pour faire la distinction entre la première et la deuxième partie en inversant les types.
+- De même, on pourrais étudier si l'ordre de nos sous-parties influent le temps d'execution. On doublerais alors notre jeu de test pour faire la distinction entre la première et la deuxième partie en inversant les types.
 
-La consommation mémoire de nos tris est une données que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'executon sur lequel nous nous sommes concentrés.
+- La consommation mémoire de nos tris est une données que nous n'avons pas eu le temps d'étudier dans notre étude approfondie mais elle y a autant sa place que le temps d'executon sur lequel nous nous sommes concentrés.
 
-Enfin, il serait aussi possible d'étudier le cas de tableaux composés de plus de 2 sous-parties.
+- Enfin, il serait aussi possible d'étudier le cas de tableaux composés de plus de 2 sous-parties.
