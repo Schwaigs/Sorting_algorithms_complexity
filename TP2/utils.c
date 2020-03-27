@@ -108,36 +108,36 @@ void printPerf(perf p){
  *      - a : aléatoire
  *      - u : valeur unique (constant)
  */
-void createCombineTab(long* A, size_t taille, long min, long max, char firstType, char secondType, size_t change){
+void createCombineTab(long* A, size_t taille, long min, long max, char* firstType, char* secondType, size_t change){
     size_t index = 0;
-    char type = firstType;
+    char type = *firstType;
     size_t fin = change;
     for(size_t i = 0;i<2;i++) {
-        switch (Type) {
+        switch (type) {
             case 'c':
-                createCroisTab(A[index], fin, min, max);
+                createCroisTab(A + index, fin, min, max);
                 break;
             case 'd':
-                createDecroisTab(A[index], fin, min, max);
+                createDecroisTab(A + index, fin, min, max);
                 break;
             case 'a':
-                createAleaTab(A[index], fin, min, max);
+                createAleaTab(A + index, fin, min, max);
                 break;
             case 'u':
-                createUniTab(A[index], fin, min, max);
+                createUniTab(A + index, fin, min, max);
                 if (i==1){
                     while(A[index-1]==A[index]){
-                        createUniTab(A[index], fin, min, max);
+                        createUniTab(A + index, fin, min, max);
                     }
                 }
                 break;
             default:
                 printf("error: type de tableau inexistant");
-                exit(EXIT_FAILURE);
                 break;
         }
         index = change;
-        type = secondType;
+        type = *secondType;
         fin = taille;
     }
+    printTab(A,taille);
 }

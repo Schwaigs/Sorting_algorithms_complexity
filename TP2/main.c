@@ -43,9 +43,10 @@ int main(int argc, char* argv[]) {
     
     /********************* Gen Tab **********************/
     char *ptr;
-    char *ptr2
+    char *ptr2;
     long taille = strtol(argv[2],&ptr,10);
     long* tab = malloc(sizeof(long)*taille);
+    printf("premiertype %s deuxiemeType %s",argv[6], argv[7]);
 
     switch (argv[3][0]){
         case 'a':
@@ -60,11 +61,11 @@ int main(int argc, char* argv[]) {
         case 'u':
             createUniTab(tab,taille,atoi(argv[4]),atoi(argv[5]));
             break;
-        case 'c':
+        case 'm':
             createCombineTab(tab,taille,atoi(argv[4]),atoi(argv[5]),argv[6],argv[7],strtol(argv[8],&ptr2,10));
             break;
         default:
-            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant] [u : unique valeur] [c : combineTab]\n");
+            printf("Argument n°4 type_tab : [a : aleatoire] [c : croissant] [d : decroissant] [u : unique valeur] [m : combineTab]\n");
             exit(EXIT_FAILURE);
     }
 
