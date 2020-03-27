@@ -137,7 +137,7 @@ void createCombineTab(long* A, size_t taille, long min, long max, char* firstTyp
         }
         index = change;
         type = *secondType;
-        fin = taille;
+        fin = taille-change;
     }
     printTab(A,taille);
 }

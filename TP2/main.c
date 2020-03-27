@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
     char *ptr2;
     long taille = strtol(argv[2],&ptr,10);
     long* tab = malloc(sizeof(long)*taille);
-    printf("premiertype %s deuxiemeType %s",argv[6], argv[7]);
+    //printf("premiertype %s deuxiemeType %s",argv[6], argv[7]);
 
     switch (argv[3][0]){
         case 'a':
@@ -70,12 +70,12 @@ int main(int argc, char* argv[]) {
     }
 
     /********************* Choix tri **********************/
-    long* tabCp = malloc(sizeof(long)*taille);
-    memcpy(tabCp,tab,sizeof(long)*taille);
+    //long* tabCp = malloc(sizeof(long)*taille);
+    //memcpy(tabCp,tab,sizeof(long)*taille);
 
     struct argument arg;
     arg.size = taille;
-    arg.tab = tabCp;
+    arg.tab = tab;
     pthread_t tri;
 
     switch (argv[1][0]){
@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
 
     pthread_join(tri,NULL);
     free(tab);
-    free(tabCp);
+    //free(tabCp);
 
     return 0;
 }
