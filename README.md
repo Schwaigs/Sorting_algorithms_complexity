@@ -327,7 +327,9 @@ ggsave("nom_du_tableau.png")
     
     On observe sur le graphique du double tableau décroissant que l'ordre de temps d'execution est toujours conservé; du plus lent au plus rapide : fusion-radix-rapide. De plus, sur le tri d'un double tableau croissant, le tri par insertion se comporte beaucoup moins bien que sur un tableau totalement trié. Lors du tri d'un double tableau constant fusion semble bien rivaliser avec le tri par insertion et même legerement prendre le dessus.
     
-     Ainsi, comme nous l'avions conjecturé pour un double tableau constant le tri fusion semble prendre le dessus. Cependant la situation pour le double croissant et décroissant reste inchangé.
+    On peut aussi constater que pour le tri d'un tableau double croissant les courbes des tri fusion-radix et rapide se superpose.
+    
+    Ainsi, comme nous l'avions conjecturé pour un double tableau constant le tri fusion semble prendre le dessus. Cependant la situation pour le double croissant et décroissant reste inchangé.
 
 ### Discussion des résultats expérimentaux
 
