@@ -154,16 +154,12 @@ Explications précises et succinctes des résultats préalables.
 
     Niveau mémoire, le tri insertion reste trés optimisé. De par son fonctionnement il execute le tri directement dans le tableau donné en entée. Ainsi il consommera la memoire de manière linéaire et en petite quantité par rapport au autre tri.
 
-    Niveau amélioration on peut amélioré ce tri en en regardant directement où il doit pour ensuite le déplacer plutot que de le deplacer cran par cran jusqu'a ce qu'on ne puisse plus le déplacer.
-
 
 - Tri fusion :
 
     Ce tri a un temps d'execution uniforme entre tout les type de tableau. Il est plutot efficace par rapport au tri par insertion sauf avec un tableau croissant ou il est beaucoup moins rapide (10x plus long).
 
     Cette version n'est pas encore tres optimisé niveau mémoire car c'est le plus gourmand de tous avec le radixSort. Il utilise 13x plus de memoire que le tri par insertion et 1.3x plus que le tri rapide.
-
-    Niveau amélioration, on réfléchir à changer ca maniere d'alouer de la memoire. Au lieu de créer un nouveau tableau à chaque subdivision process créer juste un 2ieme tableau et faire les changement entre le tableau de base et ce tableau. Ainsi il pourrait utiliser seulement 2x plus de memoire que le tri par insertion.
 
 
 - Tri Rapide :  
